@@ -1,0 +1,122 @@
+.. Lumache documentation master file, created by
+   sphinx-quickstart on Fri Dec 10 02:16:17 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to NGSED documentation!
+===============================
+
+Let us discuss some preliminaries before we dive deep into NGSED.
+
+Check out the :doc:`usage` section for further information, including how to
+:ref:`install <installation>` the project.
+
+..
+   to add comment in the document: add 2 periods .. followed by a newline and then your comment indented. 
+
+.. 
+   
+(/lu'make/) is a Python library for cooks and food lovers that creates recipes mixing random ingredients.  It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_ and offers a *simple* and *intuitive* API. :math:`x=[  x_{1}, ...,  x_{n}]^{T}`
+
+**Extended Hubbard Model** 
+
+.. math:: 
+
+   H &= -t \sum_{<i,j>, \sigma} (c^{\dagger}_{i,\sigma} c_{j,\sigma}+c^{\dagger}_{j,\sigma} c_{i,\sigma}) + U \sum_{i} n_{i,\uparrow}n_{i,\downarrow} + V\sum_{<i,j>,\sigma, \sigma^{\prime}} n_{i,\sigma}n_{j,\sigma^{\prime}} \\
+     &= H_{KE} + H_{U} + H_{V}
+
+Here, *t*  is the nearest neighbor (denoted by <>) hopping amplitude, *U*  is the on-site repulsion parameter and *V* is the nearest-neighbour Coulomb
+repulsion. Also, :math:`n_{i,\sigma} = c^{\dagger}_{i,\sigma}c_{i,\sigma}` and :math:`n_i = n_{i,\uparrow} + n_{i,\downarrow}` The equation can be written in momentum space by using Fourier transform of the creation operator.
+
+.. math::
+
+   c^\dagger_{i,\sigma} = \frac{1}{\sqrt{N}}\sum_{k}e^{-ikr_i} c^\dagger_{k,\sigma}
+
+   c_{i,\sigma} = \frac{1}{\sqrt{N}}\sum_{k}e^{ikr_i} c_{k,\sigma}
+
+.. math::
+
+   H_{KE} &= -t \sum_{<i,j>, \sigma} \Big( \frac{1}{\sqrt{N}}\sum_{k}e^{-ikr_i} c^\dagger_{k,\sigma} \cdot \frac{1}{\sqrt{N}}\sum_{k^{\prime}}e^{ik^{\prime}r_j} c_{k^{\prime},\sigma} \\
+          &+ \frac{1}{\sqrt{N}}\sum_{k}e^{-ikr_j} c^\dagger_{k,\sigma} \cdot \frac{1}{\sqrt{N}}\sum_{k^{\prime}}e^{ik^{\prime}r_i} c_{k^{\prime},\sigma}  \Big)
+
+.. math::          
+
+   H_{KE} = -t \sum_{<i,j>, \sigma} \sum_{kk^{\prime}} \Big( \frac{1}{N}e^{-ikr_i+ik^{\prime}r_{j}} c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} + \frac{1}{N}e^{-ikr_j+ik^{\prime}r_{i}}  c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \Big)
+
+For a 1-D chain :math:`r_j = r_i + a_0`
+
+.. math::          
+
+   H_{KE} &= -t \sum_{i, \sigma} \sum_{kk^{\prime}} \Big( \frac{1}{N}e^{-ikr_i+ik^{\prime}(r_{i}+a_0)} c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} + \frac{1}{N}e^{-ik(r_{i}+a_0)+ik^{\prime}r_{i}}  c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \Big) \\
+          &= -t \sum_{k,k^{\prime},\sigma} \Big( \frac{1}{N} \sum_{i} e^{-i(k-k^{\prime})r_i}e^{ik^{\prime}a_{0}} + \frac{1}{N} \sum_{i} e^{-i(k-k^{\prime})r_i}e^{-ik^{\prime}a_{0}} \Big) c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \\
+          &=  -t \sum_{k,k^{\prime},\sigma} \Big( \delta_{kk^{\prime}} e^{ik^{\prime}a_{0}} + \delta_{kk^{\prime}} e^{-ik^{\prime}a_{0}} \Big) c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \\
+          &= -t \sum_{k,\sigma} \Big( e^{ika_0} + e^{-ika_{0}}  \Big) c^{\dagger}_{k,\sigma}c_{k,\sigma} = \sum_{k,\sigma} -2t \cos(ka_{0}) c^{\dagger}_{k,\sigma}c_{k,\sigma} \\
+          &= \sum_{k,\sigma} \epsilon_{k} c^{\dagger}_{k,\sigma}c_{k,\sigma}
+
+.. math::
+
+   H_U &= U \sum_{i} n_{i,\uparrow}n_{i,\downarrow} = U \sum_i c^{\dagger}_{i,\uparrow}c_{i,\uparrow}c^{\dagger}_{i,\downarrow}c_{i,\downarrow} \\
+       &= U \sum_{i} \frac{1}{N^2}\sum_{k_1,k_2,k_3,k_4} e^{-ik_1r_i}c^{\dagger}_{k_1,\uparrow}e^{ik_2r_i}c_{k_2,\uparrow}e^{-ik_3r_i} c^{\dagger}_{k_3,\downarrow}e^{ik_4r_i}c_{k_4,\downarrow} \\
+       &= \frac{U}{N}\sum_{k_1,k_2,k_3,k_4} \sum_{i} \frac{1}{N}e^{-i(k_1-k_2+k_3-k_4)r_i} \cdot c^{\dagger}_{k_1,\uparrow}c_{k_2,\uparrow}c^{\dagger}_{k_3,\downarrow}c_{k_4,\downarrow} \\
+       &= \frac{U}{N}\sum_{k_1,k_2,k_3,k_4} \delta_{k_1-k_2+k_3,k_4} \cdot c^{\dagger}_{k_1,\uparrow}c_{k_2,\uparrow}c^{\dagger}_{k_3,\downarrow}c_{k_4,\downarrow} \\ 
+
+Define :math:`k_1 = k + q, k_2 = k, k_3 = k^\prime -q, k_4 = k^\prime`, such that :math:`k_1 - k_2 + k_3 = k_4`.
+
+.. math:: 
+   
+   H_U = \frac{U}{N} \sum_{k,k^{\prime},q} c^{\dagger}_{k+q,\uparrow}c_{k,\uparrow}c^{\dagger}_{k^{\prime}-q,\downarrow}c_{k^{\prime}, \downarrow}
+
+.. math::
+   
+   H_V &= V \sum_{<i,j>,\sigma,\sigma^{\prime}} n_{i,\sigma} n_{j,\sigma^{\prime}} = V \sum_{<i,j>,\sigma,\sigma^{\prime}} c^{\dagger}_{i,\sigma}c_{i,\sigma}c^{\dagger}_{j,\sigma^{\prime}}c_{j,\sigma^{\prime}} \\
+       &= V \sum_{<i,j>,\sigma,\sigma^{\prime}} \frac{1}{\sqrt{N}} \sum_{k_1} e^{-ik_1r_i} c^{\dagger}_{k_1,\sigma} \frac{1}{\sqrt{N}} \sum_{k_2} e^{ik_2r_i} c_{k_2,\sigma} \frac{1}{\sqrt{N}} \sum_{k_1} e^{-ik_3r_i} c^{\dagger}_{k_3,\sigma} \frac{1}{\sqrt{N}} \sum_{k_4} e^{ik_2r_i} c_{k_4,\sigma} \\
+       &= \frac{V}{N} \sum_{k_1,k_2,k_3,k_4} \frac{1}{N} \sum_{<i,j>,\sigma,\sigma^{\prime}} e^{-ik_1r_i + ik_2r_i-ik_3r_j+ik_4r_j} \cdot c^{\dagger}_{k_1,\sigma} c_{k_2,\sigma}c^{\dagger}_{k_3,\sigma^{\prime}} c_{k_4,\sigma^{\prime}}
+
+For a 1-D chain :math:`r_j = r_i + a_0`
+
+.. math::
+   
+   H_V &= \frac{V}{N} \sum_{k_1,k_2,k_3,k_4,\sigma,\sigma^{\prime}} \frac{1}{N} \sum_{i} e^{-i(k_1-k_2+k_3-k_4)r_i}e^{-i(k_3-k_4)a_0} \cdot c^{\dagger}_{k_1,\sigma} c_{k_2,\sigma}c^{\dagger}_{k_3,\sigma^{\prime}} c_{k_4,\sigma^{\prime}} \\ 
+       &= \frac{V}{N} \sum_{k_1,k_2,k_3,k_4,\sigma,\sigma^{\prime}} \delta_{k_1-k_2+k_3,k_4} e^{-i(k_3-k_4)a_0}  \cdot c^{\dagger}_{k_1,\sigma} c_{k_2,\sigma}c^{\dagger}_{k_3,\sigma^{\prime}} c_{k_4,\sigma^{\prime}} \\
+
+Define :math:`k_1 = k + q, k_2 = k, k_3 = k^\prime -q, k_4 = k^\prime`, such that :math:`k_1 - k_2 + k_3 = k_4`.
+
+.. math::
+
+   H_V = \frac{V}{N} \sum_{k,k^{\prime},q,\sigma,\sigma^{\prime}} e^{ia_{0}q} \cdot c^{\dagger}_{k+q,\sigma} c_{k,\sigma}c^{\dagger}_{k^{\prime}-q,\sigma^{\prime}} c_{k^{\prime},\sigma^{\prime}}
+
+Therefore, the extended Hubbard model in momentum space can be written as:
+
+.. math::
+
+   H = \sum_{k,\sigma} \epsilon_{k} c^{\dagger}_{k,\sigma}c_{k,\sigma} +  \frac{U}{N} \sum_{k,k^{\prime},q} c^{\dagger}_{k+q,\uparrow}c_{k,\uparrow}c^{\dagger}_{k^{\prime}-q,\downarrow}c_{k^{\prime}, \downarrow} + \frac{V}{N} \sum_{k,k^{\prime},q,\sigma,\sigma^{\prime}} e^{ia_{0}q} \cdot c^{\dagger}_{k+q,\sigma} c_{k,\sigma}c^{\dagger}_{k^{\prime}-q,\sigma^{\prime}} c_{k^{\prime},\sigma^{\prime}}
+
+Here, :math:`\epsilon_{k} = -2t \cos(ka_0)`. 
+
+
+.. note::
+
+   This project is under active development.
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+Contents
+--------
+
+.. toctree::
+   usage
+   KE
+   PE
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

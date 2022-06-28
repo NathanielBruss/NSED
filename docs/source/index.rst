@@ -1,22 +1,51 @@
-Welcome to Lumache's documentation!
-===================================
+.. NGSED documentation master file, created by
+   sphinx-quickstart on Fri Dec 10 02:16:17 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+Welcome to NGSED documentation!
+===============================
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+   
+
+
 
 .. note::
 
    This project is under active development.
 
+
+
+.. toctree::
+   :maxdepth: 20
+   :caption: Contents:
+
 Contents
 --------
 
 .. toctree::
+	Function of the Codes
+	Input Files
+	Output Files
+	Compiling and Running
+	Architecture of the Program
+	Formulas and Examples
+	Simplifications
+	Derivations for Typical Tight-Binding Models
+	Important Observables
+	References
 
-   usage
-   api
+	
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+
+
+
