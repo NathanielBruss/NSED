@@ -1,0 +1,1454 @@
+Input Files
+===========
+
+A. General Options
+------------------
+option.config gives the global program options, including bottom-level matrix format, progress control and
+alternative input file names
+
+
+.. raw:: html
+
+	<embed>
+	<table style="border-left: 1px solid #000000">
+	<table style="border-right: 1px solid #000000;border-left: 1px solid #000000">
+  <tr>
+    <th style="border-top: 1px solid #000000">Configuration and option file</th>
+  </tr>
+  
+
+  <tr>
+    <td style="border-top: 1px solid #000000">ProgControl= Write</td>
+  </tr>
+  <tr>
+    <td>HamiltonianSplitDiag: Yes</td>
+  </tr>
+  <tr>
+    <td>#########</td>
+  </tr>
+  <tr>
+    <td>Parameter input file: model_params2.in</td>
+  </tr>
+  <tr>
+    <td>HilbertSpaceParameter input file: hilb.in</td>
+  </tr>
+  <tr>
+    <td>#########</td>
+  </tr>
+  <tr>
+    <td <table style="border-bottom: 1px solid #000000">>Spectra input file: spec_params.in</td>
+  </tr>
+
+	</table> 
+	</embed>    
+	
+|
+	
+
+B. Input Files for Models
+-------------------------
+**1. Hilbert-Space Configuration**
+
+The Hilbert-space parameter input file (usually named as hilbertspace params.in) sets the basic information
+about cluster shape, size, dimension, boundary condition, spatial representation, filling and addition restrictions.
+
+The Hilbert space input file contain many aspects of information
+- Cluster – cluster size and name (required). It specifies the system size and geometry. The cluster name follows Beth clusters.
+- ElectronicSiteNumber or Orbital number. It specifies the total size × orbital number, or orbital number separately. For example, setting ElectronicSiteNumber :16 above is equivalent to setting Orbital: 2.
+- Dimension – the system dimension, 1D or 2D.
+- Boundary – boundary condition.
+- Representation – whether the many-body state is written in real or reciprocal space. It can be ‘Momentum‘ only when ‘Boundary‘ is ‘Periodic‘.
+- Momentum specifies the total momentum of the system. It can only be specified when ‘Boundary‘ is ‘Periodic‘.
+- Occupancy specifies the total electron occupation. The spin up and down occupations can be further specified, e.g. Occupancy: 8(3,5).
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 30%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 69%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000;border-bottom: 1px solid #000000">Hilbert Space Input File</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	<tr class="odd">
+	<td>Cluster: 8A</td>
+	<td>cluster size and name: the Betts 8A cluster</td>
+	</tr>
+	<tr class="even">
+	<td>ElectronicSiteNumber: 8</td>
+	<td>total size × orbital number = 8 (orbital number = 1)</td>
+	</tr>
+	<tr class="odd">
+	<td>Dimension: 2D</td>
+	<td>the system is 2D</td>
+	</tr>
+	<tr class="even">
+	<td>Boundary: Periodic</td>
+	<td>periodic boundary condition</td>
+	</tr>
+	<tr class="odd">
+	<td>Representation: Momentum</td>
+	<td>momentum-space representation</td>
+	</tr>
+	<tr class="even">
+	<td>Momentum: 0</td>
+	<td>total momentum is restricted to the zeroth one in the cluster</td>
+	</tr>
+	<tr class="odd">
+	<td style="border-bottom: 1px solid #000000">Occupancy: 8</td>
+	<td>total 8 electron occupation</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+	
+|
+
+Below is an example for a single-band system with open boundary and no double occupation (usually for the
+t − J-like spin models).
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 32%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 67%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000;border-bottom: 1px solid #000000">Hilbert Space Input File</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Cluster: 16</td>
+	<td>cluster size and name:16-site chain</td>
+	</tr>
+	<tr class="even">
+	<td>ElectronicSiteNumber: 16</td>
+	<td>total size × orbital number = 16 (orbital number = 1)</td>
+	</tr>
+	<tr class="odd">
+	<td>Dimension: 1D</td>
+	<td>the system is 1D</td>
+	</tr>
+	<tr class="even">
+	<td>Boundary: Open</td>
+	<td>open boundary condition</td>
+	</tr>
+	<tr class="odd">
+	<td>Representation: Real</td>
+	<td>real-space representation</td>
+	</tr>
+	<tr class="even">
+	<td>#Momentum: 0</td>
+	<td>the # comments out unused options</td>
+	</tr>
+	<tr class="odd">
+	<td>Occupancy: 8</td>
+	<td>total 14 electron occupation, with 8 up and 6 down</td>
+	</tr>
+	<tr class="even">
+	<td style="border-bottom: 1px solid #000000">Restrictions: NoDouble</td>
+	<td>restricted to be no doubly occupied</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+Below is an example for a two-orbital system with (single-mode) phonons.
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 31%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 68%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000;border-bottom: 1px solid #000000">Hilbert Space Input File</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	<tr class="odd">
+	<td>Cluster: 8</td>
+	<td>cluster size and name: 8-site chain</td>
+	</tr>
+	<tr class="even">
+	<td>ElectronicSiteNumber: 16</td>
+	<td>total size × orbital number = 16 (orbital number = 2)</td>
+	</tr>
+	<tr class="odd">
+	<td>Dimension: 1D</td>
+	<td>the system is 1D</td>
+	</tr>
+	<tr class="even">
+	<td>Boundary: Periodic</td>
+	<td>periodic boundary condition</td>
+	</tr>
+	<tr class="odd">
+	<td>Representation: Momentum</td>
+	<td>momentum-space representation (without specifying momentum</td>
+	</tr>
+	<tr class="even">
+	<td>Occupancy: 8(8,0)</td>
+	<td>total 8 electron occupation, with 8 up and 0 down</td>
+	</tr>
+	<tr class="odd">
+	<td>MaxPhononNumber: 500</td>
+	<td>maximal phonon number</td>
+	</tr>
+	<tr class="even">
+	<td>PhononModeNumber: 1</td>
+	<td>only a single mode of phonon is included</td>
+	</tr>
+	<tr class="odd">
+	<td style="border-bottom: 1px solid #000000">PhononMomenta: 0</td>
+	<td>this phonon has momentum 0</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+Below is an example for a multi-orbital system with one orbital set to be idle (usually used to representing the
+x-ray core-level).
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 33%; border-left: 1px solid #000000; border-right: 1px solid #000000" />
+	<col style="width: 66%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000">Hilbert Space Input File</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	<tr class="odd">
+	<td>Cluster: 8A</td>
+	<td>cluster size and name: 8A Betts cluster</td>
+	</tr>
+	<tr class="even">
+	<td>ElectronicSiteNumber: 32</td>
+	<td>total size × orbital number - 32 (orbital number -4)</td>
+	</tr>
+	<tr class="odd">
+	<td>Dimension: 2D</td>
+	<td>the system is 2D</td>
+	</tr>
+	<tr class="even">
+	<td>Boundary: Periodic</td>
+	<td>periodic boundary condition</td>
+	</tr>
+	<tr class="odd">
+	<td>Representation: Momentum</td>
+	<td>momentum-space representation (without specifying momentum</td>
+	</tr>
+	<tr class="even">
+	<td>Occupancy: 39</td>
+	<td>total 39 electron occupation</td>
+	</tr>
+	<tr class="odd">
+	<td style="border-bottom: 1px solid #000000">Conservations: orbital 3[0]</td>
+	<td>the orbital #3 has zero electron</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+**2. Model Hamiltonian Parameters**
+
+The model parameter input file (usually named as model params.in) sets the overall model parameters in the
+following format
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col  style="width: 34%; border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 66%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000">Model parameter input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	<tr class="odd">
+	<td>Hubbard</td>
+	<td>the name of the model (giving some default settings)</td>
+	</tr>
+	<tr class="even">
+	<td>U= 8 V= 0</td>
+	<td>Hubbard U and extended Hubbard interaction V</td>
+	</tr>
+	<tr class="odd">
+	<td style="border-bottom: 1px solid #000000">t= 1 &#160;&#160;t’= -0.3&#160;&#160; t’’= 0.2</td>
+	<td>hoppings, nearest-neighbor t and longer-range t′ and t′′</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+.. image:: /Graphics/Fig_BettsCluster.png
+  :width: 800
+  :alt: Alternative text
+  
+FIG. 2 Typical Betts supported in the calculation.
+
+
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="border-left: 1px solid #000000"/>
+	<col style="border-left: 1px solid #000000"/>
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000">Model parameter input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	<tr class="odd">
+	<td style="border-top: 1px solid #000000">Hubbard[2band]</td>
+	<td>the name of the model (band number should be specified)</td>
+	</tr>
+	<tr class="even">
+	<td>Es[]=</td>
+	<td rowspan="2"><blockquote>
+	<p>site-energy Es for two bands</p>
+	</blockquote></td>
+	</tr>
+	<tr class="odd">
+	<td><blockquote>
+	<p>-1.8 &#160; 3.1</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="even">
+	<td>tx[]=</td>
+	<td rowspan="3"><blockquote>
+	<p>x-direction intra- and inter-band nearest-neigbhor hopping</p>
+	</blockquote></td>
+	</tr>
+	<tr class="odd">
+	<td><blockquote>
+	<p>-0.75  0</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="even">
+	<td><blockquote>
+	<p> &#160; 0  &#160; &#160; &#160;  0.9</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="odd">
+	<td>txx[]=</td>
+	<td rowspan="3"><blockquote>
+	<p>x-direction intra- and inter-band next-nearest hopping</p>
+	</blockquote></td>
+	</tr>
+	<tr class="even">
+	<td><blockquote>
+	<p>-0.15 0</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="odd">
+	<td><blockquote>
+	<p>0 &#160;&#160;&#160;&#160;&#160;&#160;&#160;0.45</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="even">
+	<td>txxx[]=</td>
+	<td rowspan="3"><blockquote>
+	<p>x-direction intra- and inter-band next-next-nearest hopping</p>
+	</blockquote></td>
+	</tr>
+	<tr class="odd">
+	<td><blockquote>
+	<p>-0.05 0</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="even">
+	<td><blockquote>
+	<p>&#160;&#160;0 &#160;&#160;&#160;&#160;&#160;&#160;0.3</p>
+	</blockquote></td>
+	
+	</tr>
+	<tr class="odd">
+	<td>g[]=</td>
+	<td rowspan="3"><blockquote>
+	<p>electron-phonon coupling (to a single phonon mode)</p>
+	</blockquote></td>
+	</tr>
+	<td><blockquote><p>&#160;&#160;0.0&#160; -0.02</p></blockquote></td>
+	<td><blockquote>
+	<p></p>
+	</blockquote></td>
+	</tr>
+	<td><blockquote><p>-0.02&#160; 0.0</p></blockquote></td>
+	<td><blockquote>
+	<p></p>
+	</blockquote></td>
+	<tr>
+	<tr class="even">
+	<td>W[]=</td>
+	<td><blockquote>
+	<p>phonon energy</p>
+	</blockquote></td>
+	</tr>
+	<td><blockquote><p>0 0.008</p></blockquote></td>
+	<td><blockquote>
+	<p></p>
+	</blockquote></td>
+	</tr>
+	<td style="border-bottom: 1px solid #000000"><blockquote><p>0.008 0</p></blockquote></td>
+	<td><blockquote>
+	<p></p>
+	</blockquote></td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>    
+	
+
+|
+
+
+
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<table border="1">
+	<colgroup>
+		<col/>
+		<col/>
+		<col/>
+		<col/>
+		<col/>
+		<col/>
+		<col/>
+	</colgroup>
+	<thead>
+	<tr class="header">
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+		<th></th>
+		<th>Symbol</th>
+		<th>Option</th>
+		<th>Index</th>
+		<th>Physical Meaning</th>
+		<th>Real</th> 
+		<th>Reciprocal</th>
+		<th>Expression</th>
+	</tr>
+	<tr class="even">	
+		<td rowspan="8">Global Properties</td>
+		<td>Sz</td>
+		<td></td>
+		<td></td>
+		<td>net spin</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>&#8721;<sub>i</sub> (n<sub>i&#8593;</sub> - n<sub>i&#8595;</sub>)</td>
+	</tr>
+	<tr class="odd">	
+		<td>N</td>
+		<td></td>
+		<td></td>
+		<td>Electron Occupation</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>&#8721;<sub>i</sub> (n<sub>i&#8593;</sub> + n<sub>i&#8595;</sub>)</td>
+	</tr>
+	<tr class="even">	
+		<td>Mz2</td>
+		<td></td>
+		<td></td>
+		<td>local moment</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>&#8721;<sub>i</sub> (n<sub>i&#8593;</sub> - n<sub>i&#8595;</sub>))<sup>2</sup>/N</td>
+	</tr>
+	<tr class="odd">	
+		<td>N2</td>
+		<td></td>
+		<td></td>
+		<td>double occupation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>&#8721;<sub>i</sub> (n<sub>i&#8593;</sub> n<sub>i&#8595;</sub>))</td>
+	</tr>
+	<tr class="even">	
+		<td>PhnNum</td>
+		<td></td>
+		<td></td>
+		<td>phonon occupation</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>&#8721;<sub>i</sub> (a<sub>i</sub><sup>†</sup> a<sub>i</sub>))</td>
+	</tr>
+	<tr class="odd">	
+		<td>Current</td>
+		<td>x,y</td>
+		<td></td>
+		<td>current</td>
+		<td></td>
+		<td>&#x2611</td>
+		<td>&#8721;<sub>k</sub> n<sub>k</sub> cos (k<sub>x/y</sub> - a<sub>x/y</sub>))</td>
+	</tr>
+	<tr class="even">	
+		<td>CurrentPara</td>
+		<td>x,y</td>
+		<td></td>
+		<td>paramagnetic current</td>
+		<td></td>
+		<td>&#x2611</td>
+		<td>&#8721;<sub>k</sub> n<sub>k</sub> cos (k<sub>x/y</sub>))</td>
+	</tr>
+	<tr class="odd">	
+		<td>Enrg</td>
+		<td></td>
+		<td></td>
+		<td>total energy</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>H</td>
+	</tr>
+	
+	
+	
+	<tr class="even">	
+		<td rowspan="6">Single-point</td>
+		<td>Sz</td>
+		<td></td>
+		<td>i/k</td>
+		<td>net spin (at site i)</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>n<sub>i&#8593</sub>; - n<sub>i&#8595;</sub></td>
+	</tr>
+	<tr class="odd">
+		<td>N</td>
+		<td></td>
+		<td>i/k</td>
+		<td>electron occupation (at site i)</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td>n<sub>i&#8593</sub>; + n<sub>i&#8595;</sub></td>
+	</tr>
+	<tr class="even">	
+		<td>Nh</td>
+		<td></td>
+		<td>i</td>
+		<td>hole density (at site i)</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>(1 - n<sub>i&#8593;</sub>)(1 - n<sub>i&#8595;</sub>)</td>
+	</tr>
+	<tr class="odd">	
+		<td>Ns</td>
+		<td></td>
+		<td>i</td>
+		<td>singlon density (at site i)</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>&#8721;<sub>σ</sub>(1-n<sub>iσ</sub>)n<sub>iσ-bar</sub></td>
+	</tr>
+	<tr class="even">	
+		<td>Nd</td>
+		<td></td>
+		<td>i</td>
+		<td>doubloon density (at site i)</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td> n<sub>i&#8593</sub>; n<sub>i&#8595;</sub></td>
+	</tr>
+	<tr class="odd">	
+		<td>PhnNum</td>
+		<td></td>
+		<td>i/k</td>
+		<td>phonon occupation (at site i)</td>
+		<td>&#x2611</td>
+		<td>&#x2611</td>
+		<td> a<sub>i</sub><sup>†</sup> a<sub>i</sub> </td>
+	</tr>
+	
+	
+	
+	<tr class="even">	
+		<td rowspan="10">Two-point</td>
+		<td>SzSz</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>&#8721;<sub>j</sub> S<sub>j</sub><sup>z</sup>S<sub>j+i</sub><sup>z</sup> / N </td>
+	</tr>
+	<tr class="odd">	
+		<td>SzSz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>S<sub>j</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+		<tr class="even">	
+		<td>SzSz+y</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>S<sub>j</sub><sup>z</sup>S<sub>j + y&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="odd">	
+		<td>SzSz+xy</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>S<sub>j</sub><sup>z</sup>S<sub>j + x&#770 + y&#770</sub><sup>z</sup></td>
+	</tr>
+		<tr class="even">	
+		<td>SzSz+yx</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>S<sub>j</sub><sup>z</sup> S<sub>j + x&#770 - y&#770</sub><sup>z</sup></td>
+	</tr>	
+	<tr class="odd">	
+		<td>Sz-xSz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>S<sub>j  + x&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+		<tr class="even">	
+		<td>Sz-ySz+y</td>
+		<td></td>
+		<td>i</td>
+		<td>spin-spin correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>S<sub>j  + y&#770</sub><sup>z</sup>S<sub>j + y&#770</sub><sup>z</sup></td>
+	</tr>	
+	<tr class="odd">	
+		<td>NrNr</td>
+		<td></td>
+		<td>i</td>
+		<td>density-density correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>&#8721;<sub>j</sub> n<sub>j</sub>n<sub>j+i</sub> / N</td>
+	</tr>
+		<tr class="even">	
+		<td>NrNr+x</td>
+		<td></td>
+		<td>i</td>
+		<td>density-density correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>n<sub>i</sub>n<sub>i + x&#770 </sub></td>
+	</tr>	
+	<tr class="odd">	
+		<td>NrNr+y</td>
+		<td></td>
+		<td>i</td>
+		<td>density-density correlation</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>n<sub>i</sub>n<sub>i + y&#770 </sub></td>
+	</tr>
+	
+	
+	
+	<tr class="even">	
+		<td rowspan=8>Three-point</td>
+		<td>NhSz-xSz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>local hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>i</sub>S<sub>j  - x&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="odd">	
+		<td>NhSz-ySz+y</td>
+		<td></td>
+		<td>i</td>
+		<td>local hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>i</sub>S<sub>j  - y&#770</sub><sup>z</sup>S<sub>j + y&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="even">	
+		<td>NhSz+ySz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>local hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>i</sub>S<sub>j  + y&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="odd">	
+		<td>NhSz-ySz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>local hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>i</sub>S<sub>j  - y&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="even">	
+		<td>Nh|Sz-xSz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>0</sub>S<sub>j  - x&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="odd">	
+		<td>Nh|Sz-ySz+y</td>
+		<td></td>
+		<td>i</td>
+		<td>hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>0</sub>S<sub>j  - y&#770</sub><sup>z</sup>S<sub>j + y&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="even">	
+		<td>Nh|Sz+ySz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>0</sub>S<sub>j  + y&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+	<tr class="odd">	
+		<td>Nh|Sz-ySz+x</td>
+		<td></td>
+		<td>i</td>
+		<td>hole-spin-spin</td>
+		<td>&#x2611</td>
+		<td></td>
+		<td>h<sub>0</sub>S<sub>j  - y&#770</sub><sup>z</sup>S<sub>j + x&#770</sub><sup>z</sup></td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+
+
+
+TABLE I List of supported static observables.
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 32%;border-right: 1px solid #000000; border-left: 1px solid #000000" />
+	<col style="width: 67%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000">Model parameter input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Hubbard-Holstein</td>
+	<td>the name of the model (giving some default settings)</td>
+	</tr>
+	<tr class="even">
+	<td>U= 8 t= 1 t’= -0.3</td>
+	<td>Hubbard U and the band parameters</td>
+	</tr>
+	<tr class="odd">
+	<td>g= 0.1 W= 0.05</td>
+	<td>Holstein-type e-ph coupling g and the phonon energy ω</td>
+	</tr>
+	<tr class="even">
+	<td style="border-bottom: 1px solid #000000">averagedGaugeNum= 10</td>
+	<td>requested number of gauges to average (can be a 2D vector)</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+	
+|
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 34%; border-right: 1px solid #000000; border-left: 1px solid #000000" />
+	<col style="width: 65%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000">Model parameter input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Hubbard-Holstein</td>
+	<td>the name of the model (giving some default settings)</td>
+	</tr>
+	<tr class="even">
+	<td>U= 8 t= 1 t’= -0.3</td>
+	<td>Hubbard U and the band parameters</td>
+	</tr>
+	<tr class="odd">
+	<td>g= 0.1 W= 0.05</td>
+	<td>Holstein-type e-ph coupling g and the phonon energy ω</td>
+	</tr>
+	<tr class="even">
+	<td style="border-bottom: 1px solid #000000">guage= 0.05 0.01</td>
+	<td>a specific gauge field (with period 2π)</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+Both input files are required to define the model where the calculations was performed. They are called by all
+programs.
+
+
+
+
+C. Input Files for Specific Measurements
+----------------------------------------
+
+
+**1. Static Observables**
+
+The observable input file (usally named as ‘obs params.in‘) defines the requested observables in an equilibrium or
+nonequilibrium calculation
+
+.. raw:: html
+
+	<embed>
+	<table style="width:71%;">
+	<table border="1">
+	<colgroup>
+	<col style="width: 71%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th>Observable input file</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>ObsType: Mz2 Sz[all] NrNr[0] Nh|SzSz+x[All]</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+
+|
+
+
+
+One can enumerate all requested static observables here. The square bracket specifies the index. When the index is set
+to ‘all‘, it means all symmetrically independent indices (the symmetry is analyzed automatically for different clusters
+and calculations). When the index is set to ‘All‘, it means all allowed indices. This input file is required for equilibrium
+and pump-probe observable calculations, i.e. ED GROUND OBS, NGSED GROUND OBS, and TDED DYNM.
+
+**2. Spectroscopies**
+
+The spectroscopy input file (usally named as ‘spec params.in‘) defines the requested spectral calculation and
+relevant parameters in the follow format
+
+.. raw:: html
+
+	<embed>
+	<table style="width:59%;border: 1px solid #000000">
+	<colgroup>
+	<col style="width: 58%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000">Spectroscopy input file</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>SpecType: Sqw N(q,w) Raman[B1g]</td>
+	</tr>
+	<tr class="even">
+	<td>Frequencies: wMin= -5 wMax= 5 wDelta= 0.005</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+
+Alternatively, for resonant spectrum, one gives more information
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 48%;border-right: 1px solid #000000;border-left: 1px solid #000000" />
+	<col style="width: 51%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000">Spectroscopy input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>SpecType: RIXS[indir]</td>
+	<td>spectral type: indirect RIXS</td>
+	</tr>
+	<tr class="even">
+	<td>Frequencies: [-20:0.05:20]</td>
+	<td>frequency (energy loss) range</td>
+	</tr>
+	<tr class="odd">
+	<td>Momentum: 1</td>
+	<td>requested momentum index</td>
+	</tr>
+	<tr class="even">
+	<td>Krylov-subspace: 20</td>
+	<td>dimension of continued fraction expansion</td>
+	</tr>
+	<tr class="odd">
+	<td>broadening: 1</td>
+	<td>spectral broadening (energy loss)</td>
+	</tr>
+	<tr class="even">
+	<td>Resonance: omegaIn= -13.5 inverseLifeTime= 2</td>
+	<td>requested incident energy and inverse lifetime</td>
+	</tr>
+	<tr class="odd">
+	<td style="border-bottom: 1px solid #000000">PropagatorSolver: KrylovDim= 1000 tol= 1E-6</td>
+	<td>BiCGSTAB parameters</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+The incident energy can be given in a vector form (make sure to check the memory cost). For example,
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 54%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 45%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-top: 1px solid #000000;border-bottom: 1px solid #000000">Spectroscopy input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>SpecType: ResRaman[B1g]</td>
+	<td>spectral type: B1g resonant Raman</td>
+	</tr>
+	<tr class="even">
+	<td>Frequencies: [-5:0.05:20]</td>
+	<td>frequency (energy loss) range</td>
+	</tr>
+	<tr class="odd">
+	<td>Krylov-subspace: 20</td>
+	<td>dimension of continued fraction expansion</td>
+	</tr>
+	<tr class="even">
+	<td>broadening: 1</td>
+	<td>spectral broadening (energy loss)</td>
+	</tr>
+	<tr class="odd">
+	<td>Resonance: omegaIn= [0:0.2:10] inverseLifeTime= 1</td>
+	<td>incident energies and inverse lifetime</td>
+	</tr>
+	<tr class="even">
+	<td style="border-bottom: 1px solid #000000">PropagatorSolver: KrylovDim= 1000 tol= 1E-6</td>
+	<td>BiCGSTAB parameters</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+
+
+This input file is required for equilibrium and pump-probe spectral calculations, i.e. CPT GROUND SPEC and TDED TDSPEC.
+Attached is a table for all the spectral calculations
+
+**3. Time-Domain Parameters**
+
+The time-evolution input file (usually named as ‘timeparams.in‘) sets the parameters of non-equilibrium dynamics and spectral calculation. It specifies the time discretization (start, end, and interval), pump conditions (gauge field),
+
+ .. image:: /Graphics/Tables2and3.png
+  :width: 800
+  :alt: Alternative text
+  
+.. raw:: html
+
+	<embed>
+	<table border="1">
+	<colgroup>
+	<col/>
+	<col/>
+	<col/>
+	<col/>
+	<col/>
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th>Spectral Type</th>
+	<th>Input Name</th>
+	<th>Option</th>
+	<th>Index</th>
+	<th>Operator O</th>
+	</tr>
+	<tr class="even">
+		<th>charge structure factor N(q,w)</th>
+		<th>N(q,w)</th>
+		<th>-</th>
+		<th>q</th>
+		<th>&#8721;<sub>k</sub>c<sub>k+q,&#963;</sub><sup>†</sup>c<sub>kq&#963;</sub></th>
+	</tr>
+		
+	<tr class="odd">
+		<th>spin structure factor S(q, ω) </th>
+		<th>S(q,w)</th>
+		<th>-</th>
+		<th>q</th>
+		<th>&#8721;<sub>k</sub>&#963;c<sub>k+q,&#963;</sub><sup>†</sup>c<sub>kq&#963;</sub></th>
+	</tr>
+	
+	<tr class="even">
+		<th>spectral function A(k, ω)−</th>
+		<th>A(k,w)-</th>
+		<th>-</th>
+		<th>k</th>
+		<th>c<sub>k↑</sub><sup>†</sup>c<sub></th>
+	</tr>
+		
+	<tr class="odd">
+		<th>inverse spectral function A(k, ω)+</th>
+		<th>A(q,w)+</th>
+		<th>-</th>
+		<th>k</th>
+		<th>c<sub>k↑</sub><sup>†</sup></th>
+	</tr>
+	
+	<tr class="even">
+		<th>pairing correlation P (q, ω)− </th>
+		<th>P(q,w)-</th>
+		<th>s, px, d, s+</th>
+		<th>q</th>
+		<th>&#8721;<sub>k</sub>c<sub>k↑</sub>c<sub>q-k↑</sub></th>
+	</tr>
+		
+	<tr class="odd">
+		<th>pairing correlation P (q, ω)+ </th>
+		<th>P(q,w)+</th>
+		<th>s, px, d, s+</th>
+		<th>q</th>
+		<th>&#8721;<sub>k</sub>c<sub>q-k ↓ </sub><sup>†</sup>c<sub>k↑</sub><sup>†</sup></th>
+	</tr>
+	
+	<tr class="even">
+		<th>coincidence ARPES cA(k, ω)− </th>
+		<th>cA(k,w)-</th>
+		<th>-</th>
+		<th>k</th>
+		<th>c<sub>k↑</sub>c<sub>-k↓</sub></th>
+	</tr>
+		
+	<tr class="odd">
+		<th>coincidence ARPES cA(k, ω)+</th>
+		<th>cA(k,w)+</th>
+		<th>-</th>
+		<th>k</th>
+		<th>c<sub>-k↓</sub><sup>†</sup>c<sub>k↑</sub><sup>†</sup></th>
+	</tr>
+	
+	<tr class="even">
+		<th>Raman spectrum R(ω)</th>
+		<th>Rm(w)</th>
+		<th>A1g, B1g, B2g</th>
+		<th>-</th>
+		<th>&#8721;<sub>k</sub>   γ(k)n<sub>k</sub></th>
+	</tr>
+		
+	<tr class="odd">
+		<th>optical conductivity σ(ω)</th>
+		<th>Sig(w)</th>
+		<th>x, y</th>
+		<th>-</th>
+		<th>&#8721;<sub>k</sub>   j(k)n<sub>k</sub></th>
+	</tr>
+
+	<tr class="even">
+		<th>x-ray absorption I(ω)</th>
+		<th>XAS(w)</th>
+		<th>dir, indir</th>
+		<th>-</th>
+		<th>&#8721;<sub>k</sub> c<sub>k↑</sub><sup>†</sup>   p<sub>k↑</sub></th>
+	</tr>
+		
+	</table>
+	</embed>
+
+
+|
+
+TABLE II The supported Lehmann spectral types.
+
+|
+
+.. raw:: html
+
+	<embed>
+	<table border="1">
+	<colgroup>
+	<col/>
+	<col/>
+	<col/>
+	<col/>
+	<col/>
+	<col/>
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th>Spectral Type</th>
+	<th>Input Name</th>
+	<th>Option</th>
+	<th>Index</th>
+	<th>Operator1 O<sub>1</sub></th>
+	<th>Operator2 O<sub>2</sub></th>
+	</tr>
+		<tr class="odd">
+		<th>resonant inelastic x-ray scattering I(q, ωin, ω)</th>
+		<th>RIXS(q,w,win)</th>
+		<th>dir, indir, spin-flip</th>
+		<th>q</th>
+		<th>&#8721;<sub>k</sub> c<sub>k↑</sub><sup>†</sup>   p<sub>k↑</sub></th>
+	</tr>
+
+	<tr class="even">
+		<th>resonant Raman scattering R(ωin, ω)</th>
+		<th>ResRaman(w,win</th>
+		<th>A1g, A2g, B1g, B2g</th>
+		<th>-</th>
+		<th>&#8721;<sub>k</sub> c<sub>k↑</sub><sup>†</sup>   p<sub>k↑</sub></th>
+	</tr>
+
+	<tr class="odd">
+		<th>coincidence ARPES cA(k, ωin, ω)</th>
+		<th>cARPES(k,k,w,w)</th>
+		<th>-</th>
+		<th>k</th>
+		<th>&#8721;<sub>k</sub> c<sub>k↑</sub><sup>†</sup>   p<sub>k↑</sub></th>
+	</tr>
+	</table>
+	</embed>
+
+|
+  
+  
+parameters modulations (quench or continous modulation), and probe conditions. A typical time-domain input file is in the follow format
+  
+.. raw:: html
+	
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 54%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 45%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000;border-top: 1px solid #000000">Time evolution input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Time: start= 0.05 end= 60 dt= 0.05</td>
+	<td>time discretization</td>
+	</tr>
+	<tr class="even">
+	<td>Pump: A0= 1.2 w0= 4.4 sigma= 3.0 t0= 19.0</td>
+	<td>pump field A(t) (vector potential)</td>
+	</tr>
+	<tr class="odd">
+	<td style="border-bottom: 1px solid #000000">Polarization: x= 1 y= 1</td>
+	<td>polarization of pump field A(t)</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+This input file is required for the dynamics and pump-probe spectral calculations, i.e. TDED DYNM and TDED TDSPEC. The pump field is represented in an oscillatory Gaussian pulse, with central frequency “w0”, central time “t0”, width (standard deviation) “sigma”, and the peak amplitude “A0”. The polarization of pump pulse is specified in ”Polarization” by its 2D coordinates. Note, for linear polarization, this vector will be normalized. 
+There can be multiple pump pulses, to mimic sequential pump conditions. And phase-averaged pump conditions can be specified by giving the number of phases. For example,
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 61%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 38%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000;border-top: 1px solid #000000">Time evolution input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Time: start= 0.05 end= 100 dt= 0.05</td>
+	<td>time discretization</td>
+	</tr>
+	<tr class="even">
+	<td>Pump: A0= 0.4 w0= 5 sigma= 3 t0= 20 Polarization: circular+</td>
+	<td>pump field #1</td>
+	</tr>
+	<tr class="odd">
+	<td>Pump: A0= 0.3 w0= 4 sigma= 3 t0= 40 Polarization: circular-</td>
+	<td>pump filed #2</td>
+	</tr>
+	<tr class="even">
+	<td  style="border-bottom: 1px solid #000000">PhaseAverage:10</td>
+	<td>phase average number</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+Apart from the realistic pump in terms of the gauge field, some studies require quantum quench or time-dependent modulation of model parameters. This can also be specified in the input field, with or without the pump field. For example,
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 61%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 38%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000;border-top: 1px solid #000000">Time evolution input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Time: start= 0.05 end= 60 dt= 0.05</td>
+	<td>time discretization</td>
+	</tr>
+	<tr class="even">
+	<td>Quench: U[5] t0= 10</td>
+	<td>quenching U to 5 at t0 = 10</td>
+	</tr>
+	<tr class="odd">
+	<td  style="border-bottom: 1px solid #000000">ParamModulation: t centralVal= 1 amp= 0.5 freq= 0.3 sigma= 10 t0=
+	20</td>
+	<td>varying t in time</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+The parameter modulation is defined as an oscillatory Gaussian with a central time and central frequency, similar to
+the pump field.
+The calculation of pump-probe spectroscopies (i.e. TDED TDSPEC) requires an additional line in the input file, specifying the probe conditions.
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 54%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 45%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000;border-top: 1px solid #000000">Time evolution input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Time: start= 0.05 end= 60 dt= 0.05</td>
+	<td>time discretization</td>
+	</tr>
+	<tr class="even">
+	<td>Pump: A0= 1.2 w0= 4.4 sigma= 3.0 t0= 19.0</td>
+	<td>pump field A(t) (vector potential)</td>
+	</tr>
+	<tr class="odd">
+	<td>Polarization: x= 1 y= 1</td>
+	<td>polarization of pump field A(t)</td>
+	</tr>
+	<tr class="even">
+	<td  style="border-bottom: 1px solid #000000">Probe: sigma= 2.0</td>
+	<td>probe condition (probe width)</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+Note, the probe type and frequencies for pump-probe calculations are set in ‘spec params.in‘.
+
+**4. Ensemble Parameters**
+
+The ensemble input file (usually named as ‘ensembleparams.in‘) defines the requested finite-temperature, grand-canonical (unconserved particle numbers), or magnetic field (unconserved total spin) ensembles, in the follow format
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 61%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 38%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000;border-top: 1px solid #000000">Ensemble input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Temperature= [0:0.02:1]</td>
+	<td>temperature list</td>
+	</tr>
+	<tr class="even">
+	<td>ChemPot= [-1:0.05:1]</td>
+	<td>chemical potential list</td>
+	</tr>
+	<tr class="odd">
+	<td  style="border-bottom: 1px solid #000000">NumberOfStates= 100</td>
+	<td>number of states kept in each sector</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+This input file is required for ED-based equilibrium calculations, i.e. ED GROUND OBS and ED GROUND SPEC. Note, when this input file is missing, the programs will perform ground-state calculations. Technically, ensemble calculations can be supported by the NGSED and CPT methods, but they are to be implemented.
+
+**5. CPT Parameters**
+
+The cluster perturbation theory (CPT) input file (usually named as ‘cpt params.in‘) defines requested CPT calculations in the follow format
+
+.. raw:: html
+
+	<embed>
+	<table>
+	<colgroup>
+	<col style="width: 54%;border-left: 1px solid #000000;border-right: 1px solid #000000" />
+	<col style="width: 45%" />
+	</colgroup>
+	<thead>
+	<tr class="header">
+	<th style="border-bottom: 1px solid #000000;border-top: 1px solid #000000">Cluster perturbation theory input file</th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td>Doping: -4/64</td>
+	<td>time discretization</td>
+	</tr>
+	<tr class="even">
+	<td>MomentumDensity: 100</td>
+	<td>pump field A(t) (vector potential)</td>
+	</tr>
+	<tr class="odd">
+	<td>requestedBZRegion: HighSymmLines</td>
+	<td>polarization of pump field A(t)</td>
+	</tr>
+	<tr class="even">
+	<td  style="border-bottom: 1px solid #000000">FermiSurfaceThickness: 0.05</td>
+	<td>probe condition (probe width)</td>
+	</tr>
+	</tbody>
+	</table>
+	</embed>
+
+|
+
+This input file is called only by CPT GROUND SPEC. The standard CPT calculation applies to the single-particle spectral function A(k, ω). However, it can also apply to the two-particle dynamical structure factors, with appropriate adjustment of the vertex. These options should be specified in the spectroscopy input file.

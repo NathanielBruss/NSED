@@ -1,0 +1,209 @@
+Input Files
+===========
+
+General Options
+---------------
+option.config gives the global program options, including bottom-level matrix format, progress control and
+alternative input file names
+
+
+Input Files for Models
+----------------------
+**1. Hilbert-Space Configuration**
+
+The Hilbert-space parameter input file (usually named as hilbertspace params.in) sets the basic information
+about cluster shape, size, dimension, boundary condition, spatial representation, filling and addition restrictions.
+
+.. image:: file://C:/Users/iceti/Desktop/CompSci/CondensedMatterPython/sphinx_vivek-20220615T140357Z-001/sphinx_vivek/docs/source/Class_Struct.png
+  :width: 800
+  :alt: Alternative text
+
+FIG. 1 Structure of the classes in the program. The rectangle boxes are regular classes; the hexagonal boxes are base classes;
+the circles are target objects.
+
+The Hilbert space input file contain many aspects of information
+- Cluster – cluster size and name (required). It specifies the system size and geometry. The cluster name follows Beth clusters.
+- ElectronicSiteNumber or Orbital number. It specifies the total size × orbital number, or orbital number separately. For example, setting ElectronicSiteNumber :16 above is equivalent to setting Orbital: 2.
+- Dimension – the system dimension, 1D or 2D.
+- Boundary – boundary condition.
+- Representation – whether the many-body state is written in real or reciprocal space. It can be ‘Momentum‘ only when ‘Boundary‘ is ‘Periodic‘.
+- Momentum specifies the total momentum of the system. It can only be specified when ‘Boundary‘ is ‘Periodic‘.
+- Occupancy specifies the total electron occupation. The spin up and down occupations can be further specified, e.g. Occupancy: 8(3,5).
+
+
++---------------------------+----------------------------------------------------------------+
+| Hilbert Space Input File  | Meaning of Associated Line                                     |
++===========================+================================================================+
+| Cluster: 8A               | cluster size and name: the Betts 8A cluster                    |
++---------------------------+----------------------------------------------------------------+
+| ElectronicSiteNumber: 8   | total size × orbital number = 8 (orbital number = 1)           |
++---------------------------+----------------------------------------------------------------+
+| Dimension: 2D             | the system is 2D                                               |
++---------------------------+----------------------------------------------------------------+
+| Boundary: Periodic        | periodic boundary condition                                    |
++---------------------------+----------------------------------------------------------------+
+| Representation: Momentum  | momentum-space representation                                  |
++---------------------------+----------------------------------------------------------------+
+| Momentum: 0               | total momentum is restricted to the zeroth one in the cluster  |
++---------------------------+----------------------------------------------------------------+
+| Occupancy: 8              | total 8 electron occupation                                    |
++---------------------------+----------------------------------------------------------------+
+
+Below is an example for a single-band system with open boundary and no double occupation (usually for the
+t − J-like spin models).
+
++---------------------------+--------------------------------------------------------+
+| Hilbert Space Input File  | Meaning of Associated Line                             |
++===========================+========================================================+
+| Cluster: 16               | cluster size and name:16-site chain                    |
++---------------------------+--------------------------------------------------------+
+| ElectronicSiteNumber: 16  | total size × orbital number = 16 (orbital number = 1)  |
++---------------------------+--------------------------------------------------------+
+| Dimension: 1D             | the system is 1D                                       |
++---------------------------+--------------------------------------------------------+
+| Boundary: Open            | open boundary condition                                |
++---------------------------+--------------------------------------------------------+
+| Representation: Real      | real-space representation                              |
++---------------------------+--------------------------------------------------------+
+| #Momentum: 0              | the # comments out unused options                      |
++---------------------------+--------------------------------------------------------+
+| Occupancy: 8              | total 14 electron occupation, with 8 up and 6 down     |
++---------------------------+--------------------------------------------------------+
+| Restrictions: NoDouble    | restricted to be no doubly occupied                    |
++---------------------------+--------------------------------------------------------+
+
+Below is an example for a two-orbital system with (single-mode) phonons.
+
++---------------------------+-------------------------------------------------------------+
+| Hilbert Space Input File  | Meaning of Associated Line                                  |
++===========================+=============================================================+
+| Cluster: 8                | cluster size and name: 8-site chain                         |
++---------------------------+-------------------------------------------------------------+
+| ElectronicSiteNumber: 16  | total size × orbital number = 16 (orbital number = 2)       |
++---------------------------+-------------------------------------------------------------+
+| Dimension: 1D             | the system is 1D                                            |
++---------------------------+-------------------------------------------------------------+
+| Boundary: Periodic        | periodic boundary condition                                 |
++---------------------------+-------------------------------------------------------------+
+| Representation: Momentum  | momentum-space representation (without specifying momentum  |
++---------------------------+-------------------------------------------------------------+
+| Occupancy: 8(8,0)         | total 8 electron occupation, with 8 up and 0 down           |
++---------------------------+-------------------------------------------------------------+
+| MaxPhononNumber: 500      | maximal phonon number                                       |
++---------------------------+-------------------------------------------------------------+
+| PhononModeNumber: 1       | only a single mode of phonon is included                    |
++---------------------------+-------------------------------------------------------------+
+| PhononMomenta: 0          | this phonon has momentum 0                                  |
++---------------------------+-------------------------------------------------------------+
+
+
+Below is an example for a multi-orbital system with one orbital set to be idle (usually used to representing the
+x-ray core-level).
+
+
++------------------------------+-------------------------------------------------------------+
+| Hilbert Space Input File     | Meaning of Associated Line                                  |
++==============================+=============================================================+
+| Cluster: 8A                  | cluster size and name: 8A Betts cluster                     |
++------------------------------+-------------------------------------------------------------+
+| ElectronicSiteNumber: 32     | total size × orbital number - 32 (orbital number -4)        |
++------------------------------+-------------------------------------------------------------+
+| Dimension: 2D                | the system is 2D                                            |
++------------------------------+-------------------------------------------------------------+
+| Boundary: Periodic           | periodic boundary condition                                 |
++------------------------------+-------------------------------------------------------------+
+| Representation: Momentum     | momentum-space representation (without specifying momentum  |
++------------------------------+-------------------------------------------------------------+
+| Occupancy: 39                | total 39 electron occupation                                |
++------------------------------+-------------------------------------------------------------+
+| Conservations: orbital 3[0]  | the orbital #3 has zero electron                            |
++------------------------------+-------------------------------------------------------------+
+
+
+**2. Model Hamiltonian Parameters**
+
+The model parameter input file (usually named as model params.in) sets the overall model parameters in the
+following format
+
+
++-----------------------------+-----------------------------------------------------------+
+| Model parameter input file  | Meaning of Associated Line                                |
++=============================+===========================================================+
+| Hubbard                     | the name of the model (giving some default settings)      |
++-----------------------------+-----------------------------------------------------------+
+| U= 8 V= 0                   | Hubbard U and extended Hubbard interaction V              |
++-----------------------------+-----------------------------------------------------------+
+| t= 1 t’= -0.3 t’’= 0.2      | hoppings, nearest-neighbor t and longer-range t′ and t′′  |
++-----------------------------+-----------------------------------------------------------+
+
+
+.. image:: file://C:/Users/iceti/Desktop/CompSci/CondensedMatterPython/sphinx_vivek-20220615T140357Z-001/sphinx_vivek/docs/source/graphics/Fig_BettsCluster.png
+  :width: 800
+  :alt: Alternative text
+  
+FIG. 2 Typical Betts supported in the calculation.
+
+ ---------------------------- ------------------------------------------------------------
+  Model parameter input file    Meaning of the Associated Line                               
+ ---------------------------- ------------------------------------------------------------ 
+  Hubbard[2band]                the name of the model (band number should be specified)      
+  Es[]=                         site-energy Es for two bands                                 
+  -1.8  3.1                                                                                  
+  tx[]=                         x-direction intra- and inter-band nearest-neigbhor hopping   
+  -0.75  0                                                                                   
+  0  0.9                                                                                     
+  txx[]=                        x-direction intra- and inter-band next-nearest hopping       
+  -0.15 0                                                                                    
+  0 0.45                                                                                     
+  txxx[]=                       x-direction intra- and inter-band next-next-nearest hopping  
+  -0.05 0                                                                                    
+  0 0.3                                                                                      
+  g[]=                          electron-phonon coupling (to a single phonon mode)           
+  0.0 -0.02                                                                                  
+  -0.02 0                                                                                    
+  W[]=                          phonon energy                                                
+  0 0.008                                                                                    
+  0.008 0                                                                                    
+ ---------------------------- -------------------------------------------------------------- 
+
+   Symbol       Option   Index   Physical Meaning                     Real   Reciprocal  Expression
+  -- --------------- -------- -------- ----------------------------------- ------ ------------ ------------------------------------------------
+          `Sz`                         net spin                                                $\sum_i (n_{i\uparrow} - n_{i\downarrow})$ $$
+           `N`                         electron occupation                                     $\sum_i (n_{i\uparrow} + n_{i\downarrow})$$
+          `Mz2`                        local moment                                            $\sum_i (n_{i\uparrow} - n_{i\downarrow})^2/N$$
+          `N2`                         double occupation                                       $\sum_i n_{i\uparrow}  n_{i\downarrow}$$
+        `PhnNum`                       phonon occupation                                       $\sum_i a_i^\dagger a_i$$
+        `Current`     `x,y`            current                                                 $\sum_k n_k \cos (k_{x/y}-A_{x/y})$$
+      `CurrentPara`   `x,y`            paramagnetic current                                    $\sum_k n_k \cos k_{x/y}$$
+         `Enrg`                        total energy                                            $\Ham$$
+          `Sz`                 /**k**  net spin (at site $i$)                                  $n_{i\uparrow} - n_{i\downarrow}$$
+           `N`                 /**k**  electron occupation (at site $i$)                       $n_{i\uparrow} + n_{i\downarrow}$$
+          `Nh`                         hole density (at site $i$)                              $(1-n_{i\uparrow}) (1-n_{i\downarrow})$$
+          `Ns`                         singlon density (at site $i$)                           \_$(1-n_{i\sigma}) n_{i\bar{\sigma}}$$
+          `Nd`                         doublon density (at site $i$)                           $n_{i\uparrow}n_{i\downarrow}$$
+        `PhnNum`               /**k**  phonon occupation (at site $i$)                         $a_i^\dagger a_i$$
+         `SzSz`                        spin-spin correlation                                   $\sum_j S^z_{j} S^z_{j+i}/N$$
+        `SzSz+x`                       spin-spin correlation                                   $S^z_{i} S^z_{i+\hat{x}}$$
+        `SzSz+y`                       spin-spin correlation                                   $S^z_{i} S^z_{i+\hat{y}}$$
+        `SzSz+xy`                      spin-spin correlation                                   $S^z_{i} S^z_{i+\hat{x}+\hat{y}}$$
+        `SzSz+yx`                      spin-spin correlation                                   $S^z_{i} S^z_{i+\hat{x}-\hat{y}}$$
+       `Sz-xSz+x`                      spin-spin correlation                                   $S^z_{i-\hat{x}} S^z_{i+\hat{x}}$$
+       `Sz-ySz+y`                      spin-spin correlation                                   $S^z_{i-\hat{y}} S^z_{i+\hat{y}}$$
+         `NrNr`                        density-density correlation                             $\sum_j n_{j} n_{j+i}/N$$
+        `NrNr+x`                       density-density correlation                             $n_{i} n_{i+\hat{x}}$$
+        `NrNr+y`                       density-density correlation                             $n_{i} n_{i+\hat{y}}$
+      `NhSz-xSz+x`                     local hole-spin-spin                                    $h_i S^z_{i-\hat{x}} S^z_{i+\hat{x}}$
+      `NhSz-ySz+y`                     local hole-spin-spin                                    $h_i S^z_{i-\hat{y}} S^z_{i+\hat{y}}$
+      `NhSz+ySz+x`                     local hole-spin-spin                                    $h_i S^z_{i+\hat{y}} S^z_{i+\hat{x}}$
+      `NhSz-ySz+x`                     local hole-spin-spin                                    $h_i S^z_{i-\hat{y}} S^z_{i+\hat{x}}$
+      `Nh|Sz-xSz+x`                    hole-spin-spin                                          $h_0 S^z_{i-\hat{x}} S^z_{i+\hat{x}}$
+      `Nh|Sz-ySz+y`                    hole-spin-spin                                          $h_0 S^z_{i-\hat{y}} S^z_{i+\hat{y}}$
+      `Nh|Sz+ySz+x`                    hole-spin-spin                                          $h_0 S^z_{i+\hat{y}} S^z_{i+\hat{x}}$
+      `Nh|Sz-ySz+x`                    hole-spin-spin                                          $h_0 S^z_{i-\hat{y}} S^z_{i+\hat{x}}$
+
+  : List of supported static observables.
+
+
+
+Input Files for Specific Measurements
+-------------------------------------

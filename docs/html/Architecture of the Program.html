@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture of the Program &mdash; NGSED 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Formulas and Examples" href="Formulas%20and%20Examples.html" />
+    <link rel="prev" title="Compiling and Running" href="Compiling%20and%20Running.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NGSED
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Function%20of%20the%20Codes.html">Function of the Codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Input%20Files.html">Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output%20Files.html">Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiling%20and%20Running.html">Compiling and Running</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture of the Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Formulas%20and%20Examples.html">Formulas and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Simplifications.html">Simplifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Derivations%20for%20Typical%20Tight-Binding%20Models.html">Derivations for Typical Tight-Binding Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Important%20Observables.html">Important Observables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NGSED</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Architecture of the Program</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Architecture of the Program.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture-of-the-program">
+<h1>Architecture of the Program<a class="headerlink" href="#architecture-of-the-program" title="Permalink to this heading"></a></h1>
+<p>The general architecture is reflected in the folders.
+The Util folder contains all global functions, including global classes (MPI related), math functions, string
+operations and timer. The LinearAlgebra folder contains fundamental MPI-based algebra, including the MPI vector
+operations, MPI eigen-problem solver, MPI linear problem solver, and the Krylov-subspace exponential solver. Both
+folders are generically designed without physical purposes.
+The PhysDataStruct folder contains the elementary data structures constitude the exact diagonalization
+calculation. The main data structures are:</p>
+<ul class="simple">
+<li><p>Cluster Classes (including ClusterReal and ClusterReciprocal) define the geometric relation, size, dimention and symmetries;</p></li>
+<li><p>Hilbert Space Class (including the basis element BasisState and the entire Hilbert-space class HilbertSpace) defines the many-body basis, relevant Fock-space operations, and the space-level operations;</p></li>
+<li><p>Hamiltonian Matrix Class – template HamiltonianMatrix, consists of the bottom-level matrix decomposition and matrix-vector product, as well as the high-level matrix construction based on Hamiltonian terms;</p></li>
+<li><p>Many-Body State and Operations (including ManyBodyState, ManyBodyOperator and VariationalState) define the wavefunctions and many-body operations.</p></li>
+</ul>
+<p>The MeasureEngines folder contains high-level exact diagonalization calculations of observables, spectroscopies and
+dynamics. These classes are directly called by the main function to realize (separately or jointly) a physical purpose.</p>
+<p>The main data structures are:</p>
+<ul class="simple">
+<li><p>Equilibrium Engine (including pure ED EquilibriumEngine and variational + ED ‘EquilibriumVariationalEngine‘) sets up the calculation for ground state and low excited states.</p></li>
+<li><p>Equilibrium Spectroscopy Engine (including EqSpectrum and CPTSpectrum) sets up the calculation of spectroscopies at equilibrium. It relies on SpectraParams as an input of spectral type and energy/momentum range.</p></li>
+<li><p>Nonequilibrium Dynamics Engine – NonEqTimeEvolution calculates the time evolution of an initial wave function after applying a pump field. Observable engine is embedded to measure the instantaneous properties.</p></li>
+<li><p>Nonequilibrium Spectroscopy Engine – NonEqSpectrum measures the time-dependent pump-probe spectroscopies. As an extension of both spectroscopy and nonequilibrium dynamics, it takes the input from both wavefunction dynamics and spectral parameters.</p></li>
+</ul>
+<p>Apart from these four main data structures, there are two measurement engines which does not work separately and is embedded in other engines</p>
+<ul class="simple">
+<li><p>Observable Engine – ObservableEngine defines all single-time measurements based on any given wavefunctions. The input/output and reduction operations are embedded in this class. The observable engine is called in other measurement engines.</p></li>
+<li><p>Ensemble Engine (including EnsembleParams and EnsembleTransformer) measures ensemble-based properties using multiple excited states.</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Compiling%20and%20Running.html" class="btn btn-neutral float-left" title="Compiling and Running" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Formulas%20and%20Examples.html" class="btn btn-neutral float-right" title="Formulas and Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, VD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

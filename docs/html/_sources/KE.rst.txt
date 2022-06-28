@@ -1,0 +1,33 @@
+Kinetic Energy
+==============
+
+Derivation
+----------
+
+The equation can be written in momentum space by using Fourier transform of the creation operator.
+
+.. math::
+
+   c^\dagger_{i,\sigma} = \frac{1}{\sqrt{N}}\sum_{k}e^{-ikr_i} c^\dagger_{k,\sigma}
+
+   c_{i,\sigma} = \frac{1}{\sqrt{N}}\sum_{k}e^{ikr_i} c_{k,\sigma}
+
+.. math::
+
+   H_{KE} &= -t \sum_{<i,j>, \sigma} \Big( \frac{1}{\sqrt{N}}\sum_{k}e^{-ikr_i} c^\dagger_{k,\sigma} \cdot \frac{1}{\sqrt{N}}\sum_{k^{\prime}}e^{ik^{\prime}r_j} c_{k^{\prime},\sigma} \\
+          &+ \frac{1}{\sqrt{N}}\sum_{k}e^{-ikr_j} c^\dagger_{k,\sigma} \cdot \frac{1}{\sqrt{N}}\sum_{k^{\prime}}e^{ik^{\prime}r_i} c_{k^{\prime},\sigma}  \Big)
+
+.. math::          
+
+   H_{KE} = -t \sum_{<i,j>, \sigma} \sum_{kk^{\prime}} \Big( \frac{1}{N}e^{-ikr_i+ik^{\prime}r_{j}} c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} + \frac{1}{N}e^{-ikr_j+ik^{\prime}r_{i}}  c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \Big)
+
+For a 1-D chain :math:`r_j = r_i + a_0`
+
+.. math::          
+
+   H_{KE} &= -t \sum_{i, \sigma} \sum_{kk^{\prime}} \Big( \frac{1}{N}e^{-ikr_i+ik^{\prime}(r_{i}+a_0)} c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} + \frac{1}{N}e^{-ik(r_{i}+a_0)+ik^{\prime}r_{i}}  c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \Big) \\
+          &= -t \sum_{k,k^{\prime},\sigma} \Big( \frac{1}{N} \sum_{i} e^{-i(k-k^{\prime})r_i}e^{ik^{\prime}a_{0}} + \frac{1}{N} \sum_{i} e^{-i(k-k^{\prime})r_i}e^{-ik^{\prime}a_{0}} \Big) c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \\
+          &=  -t \sum_{k,k^{\prime},\sigma} \Big( \delta_{kk^{\prime}} e^{ik^{\prime}a_{0}} + \delta_{kk^{\prime}} e^{-ik^{\prime}a_{0}} \Big) c^\dagger_{k,\sigma}c_{k^{\prime},\sigma} \\
+          &= -t \sum_{k,\sigma} \Big( e^{ika_0} + e^{-ika_{0}}  \Big) c^{\dagger}_{k,\sigma}c_{k,\sigma} = \sum_{k,\sigma} -2t \cos(ka_{0}) c^{\dagger}_{k,\sigma}c_{k,\sigma} \\
+          &= \sum_{k,\sigma} \epsilon_{k} c^{\dagger}_{k,\sigma}c_{k,\sigma}
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compiling and Running &mdash; NGSED 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Architecture of the Program" href="Architecture%20of%20the%20Program.html" />
+    <link rel="prev" title="Output Files" href="Output%20Files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NGSED
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Function%20of%20the%20Codes.html">Function of the Codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Input%20Files.html">Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output%20Files.html">Output Files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Compiling and Running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-compile-the-code">A. Compile the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#b-dependent-libraries">B. Dependent Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-run-in-a-supercomputer-cluster">C. Run in a supercomputer cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Architecture%20of%20the%20Program.html">Architecture of the Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Formulas%20and%20Examples.html">Formulas and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Simplifications.html">Simplifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Derivations%20for%20Typical%20Tight-Binding%20Models.html">Derivations for Typical Tight-Binding Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Important%20Observables.html">Important Observables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NGSED</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Compiling and Running</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Compiling and Running.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="compiling-and-running">
+<h1>Compiling and Running<a class="headerlink" href="#compiling-and-running" title="Permalink to this heading"></a></h1>
+<section id="a-compile-the-code">
+<h2>A. Compile the code<a class="headerlink" href="#a-compile-the-code" title="Permalink to this heading"></a></h2>
+<p>The compilation is automated in the Makefile:</p>
+<hr class="docutils" />
+<p>make EXECUTABLE</p>
+<hr class="docutils" />
+<p>where the “EXECUTABLE” is the target program defined above.</p>
+<p>For different machines, one shoud change the definition of compilers and flags. For example, in NERSC where
+environment has been predefined, one can call “CC“ as an abstract compiler</p>
+<hr class="docutils" />
+<p>CXX = CC #-std=c++14
+FLAGS = -O3 -no-prec-div -static -fp-model fast=2 -xHost -openmp</p>
+<hr class="docutils" />
+<p>Instead, in TACC one should use specific MPI compiler and “static“ does not work</p>
+<hr class="docutils" />
+<p>CXX = mpicxx
+FLAGS = -O3 -no-prec-div -fp-model fast=2 -xHost -openmp</p>
+</section>
+<hr class="docutils" />
+<section id="b-dependent-libraries">
+<h2>B. Dependent Libraries<a class="headerlink" href="#b-dependent-libraries" title="Permalink to this heading"></a></h2>
+<p>Most of the program is based on Eigen data structure. The ground state calculation (diagonalization) lies in
+PARPACK dynamic libaray, though an alternative Lanczos class is also provided. The solution of PDE depends on
+the Odeint libaray in boost.</p>
+<p>To compile the code, one should provide the path for Eigen and Boost in the Makefile, together with the link to
+the dynamics libaray of PARPACK and ARPACK.</p>
+<p>Typically, both Eigen and Boost are modules in a supercomputer. One should “module load eigen“ and “module
+load boost“ before compiling the code. These paths should be provided in the Makefile as</p>
+<hr class="docutils" />
+<p>HEADERLIBS = $(EIGEN3)/eigen3 -I$(BOOST_DIR)/include</p>
+<hr class="docutils" />
+<p>The expansion of these paths read as</p>
+<hr class="docutils" />
+<p>-I/global/common/cori/software/eigen3/3.3.3/include/eigen3
+-I/usr/common/software/boost/1.67.0/intel/haswell/include</p>
+<hr class="docutils" />
+<p>in NERSC (Cori). In contrast, the PARPACK is not necessarily capsulated as a module. If a “parpack“ module is
+availabe, one can “module load parpack“ before compiling the code, and include the paths as</p>
+<hr class="docutils" />
+<p>OBJLIBS = $(PARPACK)</p>
+<hr class="docutils" />
+<p>The path reads as</p>
+<hr class="docutils" />
+<p>-L/usr/common/software/parpack/3.2.0/hsw/intel/lib -larpack -lparpack
+in NERSC (Cori).</p>
+</section>
+<hr class="docutils" />
+<section id="c-run-in-a-supercomputer-cluster">
+<h2>C. Run in a supercomputer cluster<a class="headerlink" href="#c-run-in-a-supercomputer-cluster" title="Permalink to this heading"></a></h2>
+<p>A hybrid MPI + OpenMP parallelization has been implemented in the program. To run a hybrid code, please
+read the instruction of your supercomputer. A typical “SLURM“submission script looks like (here is the script for
+NERSC)</p>
+<hr class="docutils" />
+<p>Batch Script</p>
+<hr class="docutils" />
+<p>#!/bin/sh<br />
+#SBATCH -J JOBNAME<br />
+#SBATCH -p debug<br />
+#SBATCH –nodes=10<br />
+#SBATCH -t 00:15:00<br />
+#SBATCH –tasks-per-node=8<br />
+#SBATCH –cpus-per-task=8<br />
+#SBATCH –constraint=haswell<br />
+#SBATCH -e job.err<br />
+#SBATCH -o job.out<br />
+#SBATCH -V</p>
+<p>cd $SLURM_SUBMIT_DIR<br />
+rm job.*<br />
+rm *.txt</p>
+<p>export OMP_PROC_BIND=true<br />
+export OMP_PLACES=threads<br />
+export OMP_NUM_THREADS=4<br />
+srun ./testNonEquilibriumDynamics &gt;&amp; mylog</p>
+<hr class="docutils" />
+<p>It is highly recommended to test the parallelization configurations before heavy batch submissions. Timing is
+embedded in the code, convenient for such test. The MPI communication overhead is typically larger than the
+shared-memory OpenMP, therefore, maximizing OMP NUM THREADS is recommended for small problems. However, for
+the construction of Hilbert space, sparse matrix and some observable evaluations, the read/write overhead is also
+obvious for the shared-memory scheme. A typical choice of OMP NUM THREADS is about 4-12.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Output%20Files.html" class="btn btn-neutral float-left" title="Output Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Architecture%20of%20the%20Program.html" class="btn btn-neutral float-right" title="Architecture of the Program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, VD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

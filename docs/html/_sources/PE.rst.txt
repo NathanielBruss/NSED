@@ -1,0 +1,19 @@
+Potential Energy
+================
+
+Derivation
+----------
+
+.. math::
+
+   H_U &= U \sum_{i} n_{i,\uparrow}n_{i,\downarrow} = U \sum_i c^{\dagger}_{i,\uparrow}c_{i,\uparrow}c^{\dagger}_{i,\downarrow}c_{i,\downarrow} \\
+       &= U \sum_{i} \frac{1}{N^2}\sum_{k_1,k_2,k_3,k_4} e^{-ik_1r_i}c^{\dagger}_{k_1,\uparrow}e^{ik_2r_i}c_{k_2,\uparrow}e^{-ik_3r_i} c^{\dagger}_{k_3,\downarrow}e^{ik_4r_i}c_{k_4,\downarrow} \\
+       &= \frac{U}{N}\sum_{k_1,k_2,k_3,k_4} \sum_{i} \frac{1}{N}e^{-i(k_1-k_2+k_3-k_4)r_i} \cdot c^{\dagger}_{k_1,\uparrow}c_{k_2,\uparrow}c^{\dagger}_{k_3,\downarrow}c_{k_4,\downarrow} \\
+       &= \frac{U}{N}\sum_{k_1,k_2,k_3,k_4} \delta_{k_1-k_2+k_3,k_4} \cdot c^{\dagger}_{k_1,\uparrow}c_{k_2,\uparrow}c^{\dagger}_{k_3,\downarrow}c_{k_4,\downarrow} \\ 
+
+Define :math:`k_1 = k + q, k_2 = k, k_3 = k^\prime -q, k_4 = k^\prime`, such that :math:`k_1 - k_2 + k_3 = k_4`.
+
+.. math:: 
+   
+   H_U = \frac{U}{N} \sum_{k,k^{\prime},q} c^{\dagger}_{k+q,\uparrow}c_{k,\uparrow}c^{\dagger}_{k^{\prime}-q,\downarrow}c_{k^{\prime}, \downarrow}
+

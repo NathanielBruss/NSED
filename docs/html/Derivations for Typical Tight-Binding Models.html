@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Derivations for Typical Tight-Binding Models &mdash; NGSED 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Important Observables" href="Important%20Observables.html" />
+    <link rel="prev" title="Simplifications" href="Simplifications.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NGSED
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Function%20of%20the%20Codes.html">Function of the Codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Input%20Files.html">Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output%20Files.html">Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiling%20and%20Running.html">Compiling and Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Architecture%20of%20the%20Program.html">Architecture of the Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Formulas%20and%20Examples.html">Formulas and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Simplifications.html">Simplifications</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Derivations for Typical Tight-Binding Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-second-quantization-in-solids">A. Second Quantization in Solids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#b-variants-of-the-hubbard-model">B. Variants of the Hubbard Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-spin-models">C. Spin Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d-phonon-and-electron-phonon-coupling">D. Phonon and Electron-Phonon Coupling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Important%20Observables.html">Important Observables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NGSED</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Derivations for Typical Tight-Binding Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Derivations for Typical Tight-Binding Models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="derivations-for-typical-tight-binding-models">
+<h1>Derivations for Typical Tight-Binding Models<a class="headerlink" href="#derivations-for-typical-tight-binding-models" title="Permalink to this heading"></a></h1>
+<p>The study of solid state physics is based on the modeling of important and intertwined degrees of freedom. According to various materials and the focus of many research interests, different minimal model Hamiltonians can be examined to address various phenomena in quantum materials. In this chapter, a second-quantized model based on band theory is derived and discussed in detail as it relates to cuprate systems. In addition, other physical excitations including spin, orbital, phonon and exciton degrees of freedom are discussed.</p>
+<section id="a-second-quantization-in-solids">
+<h2>A. Second Quantization in Solids<a class="headerlink" href="#a-second-quantization-in-solids" title="Permalink to this heading"></a></h2>
+<p>Most of the physical properties in condensed matter lie in the electronic configurations, moving in the ion potential background through a Born-Oppenheimer approximation. Therefore, the solution of electrons under a special periodic potential or crystalline system is a minimal model for the discussion of solid states. This solution together with its second quantized form is derived in a non-interacting band theory and then extrapolated into generic electronic systems.</p>
+<p>Electrons in solid system can be described by the Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{manybodyHam}
+H = \sum_i\left[\frac{\mathbf{p}_i^2}{2m_e} +V(r_i)\right] + \sum_{ij}U(r_i,r_j)\end{aligned}\]</div>
+<p>Eq.(19)</p>
+<p>where V (r) is the periodic ion potential and <span class="math notranslate nohighlight">\(U (r_i, r_j)\)</span> is the electron-electron interactions. Since the first two terms in
+square bracket is a simple summation of each electron energy, this part is usually called one-body terms. In contrast,
+the <span class="math notranslate nohighlight">\(U (r_i, r_j)\)</span> are many-body terms
+In the non-interacting limit where <span class="math notranslate nohighlight">\(U(r_i,r_j)\equiv 0\)</span>, the Hamiltonian can be written in a one-body form <span class="math notranslate nohighlight">\(H = \sum_i \hat{h}_i\)</span> and with the one-body Hamiltonian <span class="math notranslate nohighlight">\(h_i = \left[\frac{\mathbf{p}_i^2}{2m_e} +V(r_i)\right]\)</span>. Its eigenstates can be solved generically according to Bloch theorem</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{Blochtheorem}
+\varphi_k^\alpha = e^{ik\cdot r} u_k^\alpha(r)\end{aligned}\]</div>
+<p>Eq.(20)</p>
+<p>with <span class="math notranslate nohighlight">\(u_k^\alpha(r)\)</span> the same periodicity with <span class="math notranslate nohighlight">\(V(r)\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> representing generic spin-orbital index. The characteristic number <span class="math notranslate nohighlight">\(k\)</span> is quasi-momentum, which runs over all first Brillouin zone. Thus, the many-body equation can be reduced to a single-body problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{singleBodySchrodinger}
+\hat{h}\varphi_k^\alpha(r) =\varepsilon_k^\alpha \varphi_k^\alpha(r).\end{aligned}\]</div>
+<p>Eq.(21)</p>
+<p>After applying fermionic permutation rule, the many-body wave-function can be expressed as the Slater determinant</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\label{slaterDeterminant}
+\Psi_{k_1,\cdots,k_N}^{(\alpha_1,\cdots,\alpha_N)}(r_1,\cdots,r_N) =\frac1{\sqrt{N!}}\left|\begin{array}{cccc}
+ \varphi_{k_1}^{(\alpha_1)}(r_1) &amp; \varphi_{k_1}^{(\alpha_1)}(r_2) &amp; \cdots &amp; \varphi_{k_1}^{(\alpha_1)}(r_N) \\
+  \varphi_{k_2}^{(\alpha_2)}(r_1) &amp; \varphi_{k_2}^{(\alpha_2)}(r_2) &amp; \cdots &amp; \varphi_{k_2}^{(\alpha_2)}(r_N) \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+\varphi_{k_N}^{(\alpha_N)}(r_1) &amp; \varphi_{k_N}^{(\alpha_N)}(r_2) &amp; \cdots &amp; \varphi_{k_N}^{(\alpha_N)}(r_N)
+\end{array}
+ \right|\end{aligned}\end{split}\]</div>
+<p>Eq.(22)</p>
+<p>with <em>N</em> the number of particles.
+In a bra-ket notation it can be simplified as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{braket}
+\big\langle r_1,\cdots,r_N \big|\{k_m\};\{\alpha_m\}\big\rangle = \Psi_{k_1,\cdots,k_N}^{(\alpha_1,\cdots,\alpha_N)}(r_1,\cdots,r_N). \end{aligned}\]</div>
+<p>Eq.(23)</p>
+<p>For convenience in the following text, we explicitly split the orbital
+and spin degree of freedom. Then the Schrodinger Equation is solved as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{manyBodySchrodinger}
+H\big|\{k_m\};\{\sigma_m\};\{\alpha_m\}\big\rangle =\sum_m \varepsilon_{k_m}^{\alpha_m}\big|\{k_m\};\{\sigma_m\};\{\alpha_m\}\big\rangle.\end{aligned}\]</div>
+<p>Eq.(24)</p>
+<p>Second quantization lies on the definition the creation operators
+<span class="math notranslate nohighlight">\(c_{k\sigma}^{\alpha\dagger}\)</span> of a electron in Bloch state
+<span class="math notranslate nohighlight">\(\varphi_k^\alpha(r)\)</span> with spin <span class="math notranslate nohighlight">\(\sigma\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+c_{k\sigma}^{\alpha\dagger} \big|\{k_m\};\{\sigma_m\};\{\alpha_m\}\big\rangle =\prod_m \big(1-\delta_{k,k_m}\delta_{\sigma,\sigma_m}\delta_{\alpha,\alpha_m}\big)
+\big|k,\{k_m\};\sigma,\{\sigma_m\};\alpha,\{\alpha_m\}\big\rangle\end{aligned}\]</div>
+<p>Eq.(25)</p>
+<p>or introducing its Fourier form</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{secondquantK}
+c_{i\sigma}^{\alpha\dagger} = \frac1{\sqrt{L}}\sum_{k\sigma} e^{-ik\cdot R_i} c_{k\sigma}^{\alpha\dagger}.\end{aligned}\]</div>
+<p>Eq.(26)</p>
+<p>Here <span class="math notranslate nohighlight">\(r_i\)</span> is the an lattice vector and the operators <span class="math notranslate nohighlight">\(c_{i\sigma}^{\alpha\dagger}\)</span> are canonical fermion operators following <span class="math notranslate nohighlight">\(\{c_{i\sigma}^{\alpha}, c_{j\sigma}^{\beta}\} =0\)</span> and <span class="math notranslate nohighlight">\(\{c_{i\sigma}^{\alpha}, c_{j\sigma}^{\beta\dagger}\} =\delta_{ij}\delta_{\alpha\beta}\)</span>. The Wannier basis can be the rewritten as the span of <span class="math notranslate nohighlight">\(\big|\{i_m\};\{\sigma_m\};\{\alpha_m\}\big\rangle = c_{i_{N-1}\sigma_{N-1}}^{(\alpha_{N-1})\dagger}\cdots c_{i_0\sigma_0}^{(\alpha_0)\dagger}|\,\rangle\)</span>. To distinguish from the number of particles, we use <span class="math notranslate nohighlight">\(L\)</span> to denote the overall system size in this thesis.</p>
+<p>For convenience of real-space representation, people introduced the Wannier function <span class="math notranslate nohighlight">\(W^\alpha(r-R_i)=\frac1{\sqrt{L}} \sum_k \varphi_k^\alpha e^{-ik\cdot R_i}\)</span> and therefore, <span class="math notranslate nohighlight">\(\varphi_k^\alpha = \frac1{\sqrt{L}} \sum_i e^{ik\cdot R_i}W^\alpha(r-R_i)\)</span>. Therefore we can write the field operator</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\Psi_{\sigma}^{\dagger}(r) = \sum_{k\alpha}\varphi_k^{\alpha*}(r) c_{k\sigma}^{\alpha\dagger} = \sum_{i\alpha}W^{\alpha*}(r-r_i) c_{i\sigma}^{\alpha\dagger}.\end{aligned}\]</div>
+<p>Eq.(27)</p>
+<p>Based on this Wannier basis originating from the one-body part, the second quantized Hamiltonian of full electrons Eq. [19] becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H &amp;=&amp; \sum_\sigma\int\Psi_{\sigma}^{\dagger}(r) \hat{h} \Psi_{\sigma}(r) dr^3+\frac12 \sum_{\sigma_1\sigma_2}\iint\Psi_{\sigma_1}^{\dagger}(r_1)  \Psi_{\sigma_2}^{\dagger}(r_2)U(r_1,r_2) \Psi_{\sigma_2}(r_2) \Psi_{\sigma_1}(r_1)dr_1^3dr_2^3.\end{aligned}\]</div>
+<p>Eq.(28)</p>
+<p>Expanding in the Wannier basis,</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{secQuantGeneric}
+H =\sum_{ij,\alpha\sigma} t_{ij}^\alpha c_{i\sigma}^{\alpha\dagger}c_{j\sigma}^{\alpha} +\sum_{ijl\mathbf{m}}\sum_{\alpha\beta\gamma\delta}\sum_{\sigma\sigma^\prime} U_{ijl\mathbf{m}}^{\alpha\beta\gamma\delta} c_{i\sigma}^{\alpha\dagger}c_{i\sigma^\prime}^{\beta\dagger}c_{l\sigma^\prime}^{(\gamma)}c_{\mathbf{m}\sigma}^{(\delta)}.\end{aligned}\]</div>
+<p>Eq.(29)</p>
+<p>Here we extracted the hopping matrix element</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+t_{ij}^\alpha = \int W^{\alpha*}(r-R_i) \hat{h} W^\alpha(r-R_j) dr^3\end{aligned}\]</div>
+<p>and many-body interactions
+.. container:: Eq.array*</p>
+<blockquote>
+<div><p>U_ijl^ = W^(r-R_i)W^(r^-R_j) U(r,r^) W^()(r^-R_l)W^()(r-R_m) dr^3
+dr^.</p>
+</div></blockquote>
+<p>In real materials, the determination of either Bloch states <span class="math notranslate nohighlight">\(\varepsilon_k^\alpha\)</span> or Wannier states <span class="math notranslate nohighlight">\(W_\alpha\)</span> is highly non-trivial. Considering the Wannier wavefunction describes the electrons near a given ion site, it is convenient to use the linear combination of atomic wavefunctions as an approximation of Wannier function, which is called <em>tight-binding approximation</em>. A typical example is the Slater-Koster hopping matrix elements (Slater and Koster, 1954).</p>
+<p>Under the tight-binding assumption, the matrix elements are calculated up to a few neighbors with decaying strength. In this thesis, we usually adopt the two-dimensional single-band square lattice, whose non-interacting representation is <span class="math notranslate nohighlight">\(\mathcal{H}=\varepsilon_{k}n_{k}\)</span> where <span class="math notranslate nohighlight">\(n_k= \sum_\sigma c_{k\sigma}^\dagger c_{k\sigma}\)</span> is the density operator and band dispersion</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:eqBareBandStruc}
+\varepsilon_{k}=-2t\left[\cos(k_x)+\cos(k_y)\right]-4t^\prime\cos(k_x)\cos(k_y)-2t^{\prime\prime}\left[\cos(2k_x)+\cos(2k_y)\right].\end{aligned}\]</div>
+<p>Eq.(30)</p>
+<p>Reordering the second-quantized Hamiltonian Eq. (29)
+according to various interaction forms, it can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H = H_{kin} + H_U + H_{U^\prime} + H_J + H_{J^\prime}\end{aligned}\]</div>
+<p>in which the <span class="math notranslate nohighlight">\(H_{\rm kin}\)</span> is kinetic energy, <span class="math notranslate nohighlight">\(H_U/H_{U^\prime}\)</span> are Coulomb interactions and <span class="math notranslate nohighlight">\(H_J/H_{J^\prime}\)</span> are exchange interactions. The kinetic <span class="math notranslate nohighlight">\(H_{kin}\)</span> includes all quadratic terms <span class="math notranslate nohighlight">\(H_{kin} %&amp;=&amp; \sum_{\gamma\gamma^\prime}\sum_{i,\sigma} \left[ t^x_{\gamma\gamma^\prime} c^\dagger_{i+\hat{x},\gamma^\prime\sigma}c_{i,\gamma\sigma} + t^y_{\gamma\gamma^\prime} c^\dagger_{i+\hat{y},\gamma^\prime\sigma}c_{i,\gamma\sigma} + t^{xx}_{\gamma\gamma^\prime} c^\dagger_{i+2\hat{x},\gamma^\prime\sigma}c_{i,\gamma\sigma} + t^{xy}_{\gamma\gamma^\prime} c^\dagger_{i+\hat{x}+\hat{y},\gamma^\prime\sigma}c_{i,\gamma\sigma}\right.\\ &amp;&amp;\left. + t^{yy}_{\gamma\gamma^\prime} c^\dagger_{i+2\hat{x},\gamma^\prime\sigma}c_{i,\gamma\sigma} + t^{xxy}_{\gamma\gamma^\prime} c^\dagger_{i+2\hat{x}+\hat{y},\gamma^\prime\sigma}c_{i,\gamma\sigma} + t^{xyy}_{\gamma\gamma^\prime} c^\dagger_{i+\hat{x}+2\hat{y},\gamma^\prime\sigma}c_{i,\gamma\sigma} + t^{xxyy}_{\gamma\gamma^\prime} c^\dagger_{i+2\hat{x}+2\hat{y},\gamma^\prime\sigma}c_{i,\gamma\sigma}+h.c. \right]\\\ = \sum_{k\sigma}\sum_{\alpha\alpha^\prime} c^{(\alpha^\prime)\dagger}_{k\sigma}\xi_{\alpha\alpha^\prime}(k)c_{k\sigma}^\alpha\)</span> while the potential terms are defined as</p>
+<p><em>on-site Coulomb interaction</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H_U=\sum_\alpha U_\alpha\sum_{i}n_{i\uparrow}^\alpha n^\alpha_{i\downarrow}=\sum_\alpha \frac{U_\alpha}{L}\sum_{k_1,k_2,q}c^{\alpha\dagger}_{k_2+q,\uparrow}
+c^{\alpha\dagger}_{k_1-q,\downarrow}c^\alpha_{k_1,\downarrow}c^\alpha_{k_2,\uparrow},\end{aligned}\]</div>
+<p><em>inter-orbital interaction</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H_{U^\prime}=\sum_{\alpha\neq\alpha^\prime} \frac{U^\prime_{\alpha\alpha^\prime}}{2}\sum_{i,\sigma,
+\sigma^\prime}n^\alpha_{i\sigma}n^{(\alpha^\prime)}_{i\sigma^\prime}=\sum_{\alpha\neq\alpha^\prime} \frac{U^\prime_{\alpha\alpha^\prime}}{2L}\sum_{\sigma,
+\sigma^\prime}\sum_{k_1,k_2,q}c^{\alpha\dagger}_{k_2+q,\sigma}
+c^{(\alpha^\prime)\dagger}_{k_1-q,\sigma^\prime}c^{(\alpha^\prime)}_{k_1,\sigma^\prime}c^\alpha_{k_2\sigma},\end{aligned}\]</div>
+<p><em>orbital-flip terms</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H_J=\sum_{\alpha\neq\alpha^\prime}\frac{J_{\alpha\alpha^\prime}}{2}\sum_{i,\sigma,\sigma^\prime}
+c^{\alpha\dagger}_{i\sigma}
+c^{(\alpha^\prime)\dagger}_{ i\sigma^\prime}
+c^\alpha_{i\sigma^\prime}
+c^{(\alpha^\prime)}_{i\sigma}=\sum_{\alpha\neq\alpha^\prime} \frac{J_{\alpha\alpha^\prime}}{2L}\sum_{\sigma,
+\sigma^\prime}\sum_{k_1,k_2,q}
+c^{\alpha\dagger}_{k_2+q,\sigma}
+c^{(\alpha^\prime)\dagger}_{k_1-q,\sigma^\prime}
+c^\alpha_{k_1\sigma^\prime}
+c^{(\alpha^\prime)}_{k_2\sigma},\end{aligned}\]</div>
+<p>and <em>pair-hopping terms</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H_{J^\prime}=\sum_{\alpha\neq\alpha^\prime} \frac{J^\prime_{\alpha\alpha^\prime}}{2}\sum_{i}\sum_{\sigma\neq
+\sigma^\prime}c^{\alpha\dagger}_{i\sigma}
+c^{\alpha\dagger}_{i\sigma^\prime}
+c^{(\alpha^\prime)}_{i\sigma^\prime}
+c^{(\alpha^\prime)}_{i\sigma}=\sum_{\alpha\neq\alpha^\prime} \frac{J^\prime_{\alpha\alpha^\prime}}{2L}\sum_{\sigma \neq
+\sigma^\prime}\sum_{k_1,k_2,q}
+c^{\alpha\dagger}_{k_2+q,\sigma}
+c^{\alpha\dagger}_{k_1-q,\sigma^\prime}
+c^{(\alpha^\prime)}_{k_1\sigma^\prime}
+c^{(\alpha^\prime)}_{k_2\sigma}.
+%&amp;=&amp;\sum_{\alpha\neq\alpha^\prime} \frac{J^\prime_{\alpha\alpha^\prime}}{L}\sum_{k_1,k_2,q} c^{\alpha\dagger}_{k_2+q,\uparrow} c^{\alpha\dagger}_{k_1-q,\downarrow}c^{(\alpha^\prime)}_{k_1\downarrow} c^{(\alpha^\prime)}_{k_2\uparrow}
+\end{aligned}\]</div>
+</section>
+<section id="b-variants-of-the-hubbard-model">
+<h2>B. Variants of the Hubbard Model<a class="headerlink" href="#b-variants-of-the-hubbard-model" title="Permalink to this heading"></a></h2>
+<p>While charge reservoir layers introduce doped carriers, the CuO<span class="math notranslate nohighlight">\(_2\)</span> planes are believed to capture the strong correlations and interactions relevant to the cuprate phase diagram. Therefore, the electronic physics of cuprates is believed to lie in minimal copper-oxide models that represent the copper <span class="math notranslate nohighlight">\(3d_{x^2-y^2}\)</span> and oxygen <span class="math notranslate nohighlight">\(2p_{x/y}\)</span> valence orbitals.</p>
+<p>A tight-binding model containing these orbitals and the strongcorrelations among them is called three-band Hubbardmodel:raw-latex:<cite>cite{mattheiss1987electronic, varma1987charge, emery1987theory}</cite>, whose Hamiltonian reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:realSpace3BH}
+\mathcal{H}=-\sum_{\langle i,j\rangle \sigma}t_{pd}^{ij}(d^{\dagger}_{i\sigma}p_{j\sigma}+h.c.)-\sum_{\langle j,j'\rangle \sigma}t_{pp}^{jj'}(p^{\dagger}_{j\sigma}p_{j'\sigma}+h.c.)+\sum_{i\sigma}\epsilon_dn^d_{i\sigma}+\sum_{j\sigma}\epsilon_pn^p_{j\sigma}+\sum_i U_dn^d_{i\uparrow}n^d_{i\downarrow}+\sum_{j\alpha} U_pn^p_{j\uparrow}n^p_{j\downarrow}\end{aligned}\]</div>
+<p>Eq.(31)</p>
+<p>where <span class="math notranslate nohighlight">\(d^\dagger_{i\sigma}\)</span> (<span class="math notranslate nohighlight">\(p^\dagger_{j\sigma}\)</span>) creates a hole with spin <span class="math notranslate nohighlight">\(\sigma\)</span> at a copper site <span class="math notranslate nohighlight">\(i\)</span> (oxygen site <span class="math notranslate nohighlight">\(j\)</span>) and <span class="math notranslate nohighlight">\(n^d_{i\sigma}\)</span> (<span class="math notranslate nohighlight">\(n^p_{j\sigma}\)</span>) is the copper (oxygen) hole number operator.The first two terms of the Hamiltonian represent the nearest-neighborncopper-oxygen and oxygen-oxygen hybridization. The hopping integrals (<span class="math notranslate nohighlight">\(t_{pd}^{ij}\)</span> and <span class="math notranslate nohighlight">\(t_{pp}^{jj'}\)</span>) change sign with a <span class="math notranslate nohighlight">\(d\)</span>-symmetry. The third term in the Hamiltonian represents the charge-transfer energy <span class="math notranslate nohighlight">\(\Delta=\varepsilon_p-\varepsilon_d\)</span>, while the last two terms are the onsite Hubbard interactions on copper and oxygen, respectively.</p>
+<p><strong>1. Three-Orbital Model in Momentum Space</strong></p>
+<p>Considering the translational symmetry, it is usually convenient to write the model in momentum space. Defining the Fourier transform of fermionic operators</p>
+<div class="math notranslate nohighlight">
+\[d^{\dagger}_k=\frac1{\sqrt{L}}\sum_i e^{ik\cdot r_i}d^{\dagger}_i\,,\quad
+p^{(x)\dagger}_{k}=\frac1{\sqrt{L}}\sum_{j} e^{ik\cdot r_j}p^{\dagger}_j,\quad\textrm{and}\quad
+p^{(y)\dagger}_{k}=\frac1{\sqrt{L}}\sum_{j^\prime} e^{ik\cdot r_{j^\prime}}p^{\dagger}_{j^\prime}.\]</div>
+<p>Eq.(32)</p>
+<p>Note the hopping integrals <span class="math notranslate nohighlight">\(t_{pd}^{ij}\)</span> and <span class="math notranslate nohighlight">\(t_{pp}^{jj^\prime}\)</span> follow <span class="math notranslate nohighlight">\(d\)</span>-symmetry of <span class="math notranslate nohighlight">\(i-j\)</span>. Therefore, the momentum-space representation reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\mathcal{H}%&amp;=&amp;-\sum_{\langle i,j\rangle \sigma}t_{pd}^{ij}(d^{\dagger}_{i\sigma}p_{j\sigma}+h.c.)-\sum_{\langle j,j'\rangle \sigma}t_{pp}^{jj'}(p^{\dagger}_{j,x\sigma}p_{j',y\sigma}+h.c.)\nonumber\\
+%&amp;&amp;+\sum_{i\sigma}\epsilon_dn^d_{i\sigma}+\sum_{j\sigma}\epsilon_pn^p_{j\sigma} +\sum_i U_dn^d_{i\uparrow}n^d_{i\downarrow}+\sum_{j\alpha} U_pn^p_{j\uparrow}n^p_{j\downarrow}\nonumber\\
+%&amp;=&amp;\sum_{k\sigma}(\xi^{pdx}_k d^{\dagger}_{k\sigma}p_{k,x\sigma} +h.c.)+\sum_{k\sigma}(\xi^{pdy}_k d^{\dagger}_{k\sigma}p_{k,y\sigma} +h.c.) +\sum_{k\sigma}\xi^{pp}_k(p^{\dagger}_{k\sigma x}p_{k\sigma y}+h.c.)+\sum_{k\sigma}\epsilon_dn^d_{k\sigma}\nonumber\\
+%&amp;&amp;+\sum_{k'\sigma}\epsilon_pn^p_{k'\sigma}
+%+ \frac{U_d}{N}\sum_{k_1,k_2,q}d^{\dagger}_{k_2+q\uparrow}d^{\dagger}_{k_1-q\downarrow}d_{k_1\downarrow}d_{k_2\uparrow}
+%+\frac{U_p}{N}\sum_{\alpha=x,y}\sum_{k'_1,\k'_2,q}p^{\dagger}_{k'_2+q\,\alpha\uparrow}p^{\dagger}_{k'_1-q\,\alpha\downarrow}p_{k'_1\alpha\downarrow}p_{k'_2\alpha\uparrow}\nonumber\\
+&amp;=&amp;\sum_{k\sigma}(d^{\dagger}_{k\sigma},p^{(x)\dagger}_{k\sigma},p^{(y)\dagger}_{k\sigma})
+\left(
+  \begin{array}{ccc}
+    \epsilon_d &amp; \xi^{pdx}_k &amp; \xi^{pdy}_k \\
+    -\xi^{pdx}_k &amp; \epsilon_p &amp; \xi^{pp}_k \\
+    -\xi^{pdy}_k &amp; \xi^{pp}_k &amp; \epsilon_p \\
+  \end{array}
+\right)
+\left(
+  \begin{array}{c}
+    d_{k\sigma} \\
+    p^{(x)}_{k\sigma} \\
+    p^{(y)}_{k\sigma} \\
+  \end{array}
+\right)\\
+&amp;&amp;+ \frac{U_d}{L}\sum_{k_1,k_2,q}d^{\dagger}_{k_2+q\uparrow}d^{\dagger}_{k_1-q\downarrow}d_{k_1\downarrow}d_{k_2\uparrow}
++\frac{U_p}{L}\sum_{\alpha=x,y}\sum_{k'_1,k'_2,q}p^{\alpha\dagger}_{k'_2+q\,\uparrow}p^{\alpha\dagger}_{k'_1-q\,\downarrow}p^\alpha_{k'_1\downarrow}p^\alpha_{k'_2\uparrow},\nonumber\end{aligned}\end{split}\]</div>
+<p>Eq. (33)</p>
+<p>where <span class="math notranslate nohighlight">\(\xi^{pdx}_k=2it_{pd}\sin(\frac{k_xa}{2})\)</span>, <span class="math notranslate nohighlight">\(\xi^{pdy}_k=2it_{pd}\sin(\frac{k_ya}{2})\)</span> and <span class="math notranslate nohighlight">\(\xi^{pp}_k=-4t_{pp}\sin(\frac{k_xa}{2})\sin(\frac{k_ya}{2})\)</span> set the single-body Hamiltonian matrix.</p>
+<p><strong>2. The Single-Band Hubbard Model</strong></p>
+<p>To simplify the three-band model, it was noted that the charge-transfer nature leads to the d − p bonding and antibonding states. Therefore, one can approximately define new Wannier orbitals forming the spin singlet or triplet pairs</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+c_{i\sigma}^{\pm}=\frac1{\sqrt{2}} \left( \tilde{p}_{i\bar{\sigma}}d_{i\sigma}\pm \tilde{p}_{i\sigma}d_{i\bar{\sigma}} \right).\end{aligned}\]</div>
+<p>Eq. (34)</p>
+<p>The low-energy physics lies in the spin singlet part <span class="math notranslate nohighlight">\(c_{i\sigma}^{-}\)</span>, named Zhang-Rice singlet:raw-latex:<cite>cite{zhang1988effective}</cite>. For simplicity, we write it <span class="math notranslate nohighlight">\(c_{i\sigma}\)</span> without confusion. Under Zhang-Rice picture, the minimal physics of cuprates lies in the single-band Hubbard model:</p>
+<div class="math notranslate nohighlight">
+\[\label{chp1:realspacehubbard}
+H_{\rm Hubbard} = -\sum_{ i,j, \sigma} t_{ij} \left( c^\dagger_{j\sigma} c_{i\sigma} +h.c.\right)  + U\sum_{i}n_{i\uparrow}n_{i\downarrow}\]</div>
+<p>Eq. (35)</p>
+<p>where <span class="math notranslate nohighlight">\(U\)</span> is the on-site Coulomb repulsion and <span class="math notranslate nohighlight">\(t_{ij}\)</span> is the hopping integral between site <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. In a regular crystalline structure, <span class="math notranslate nohighlight">\(t_{ij}\)</span> decays with the distance <span class="math notranslate nohighlight">\(|i -j|\)</span>. Thus, it is usually truncated to nearest neighbor hopping <span class="math notranslate nohighlight">\(t\)</span>, next-nearest neighbor hopping <span class="math notranslate nohighlight">\(t^\prime\)</span>.</p>
+<p>For convenience, the momentum representation of single-band Hubbard model is frequently used</p>
+<div class="math notranslate nohighlight">
+\[\label{chp1:kspacehubbard}
+H_{\rm Hubbard} = \sum_{ k, \sigma}\varepsilon_{k} c^\dagger_{k\sigma} c_{k\sigma}  + \frac{U}{L}\sum_{k_1,k_2,q}c^{\dagger}_{k_2+q\uparrow}
+c^{\dagger}_{k_1-q\downarrow}c_{k_1\downarrow}c_{k_2\uparrow}.\]</div>
+<p>Eq. (36)</p>
+<p>Here all the kinetic information is included in the band structure <span class="math notranslate nohighlight">\(\varepsilon_{k}\)</span>.</p>
+<p>The complexity of Hubbard model is highly dependent on its spatial dimension and parameters. What is more interesting is U &gt;&gt; t as a prototype of correlated electrons.</p>
+<p>Symmetries and conserved quantities are significant in solving and analyzing the physical properties of a system, especially the low-temperature or ground state behavior. In most spin-1/2 tight-binding models, the Hamiltonian possesses at least <span class="math notranslate nohighlight">\(U(1)\times U(1)\)</span> symmetry. This comes from particle <span class="math notranslate nohighlight">\(\hat{N}\)</span> and spin <span class="math notranslate nohighlight">\(S_z\)</span> conservation. Consider the <span class="math notranslate nohighlight">\(U(1)\)</span> transformation <span class="math notranslate nohighlight">\(c_{i\sigma} \rightarrow c_{i\sigma}e^{i\theta}\)</span> and <span class="math notranslate nohighlight">\(c_{i\sigma}^\dagger \rightarrow c_{i\sigma}^\dagger e^{-i\theta}\)</span>. It is easy to show that the fermion-paired Hamiltonian <span class="math notranslate nohighlight">\(H\)</span> is symmetric under this <span class="math notranslate nohighlight">\(U(1)\)</span> transformation, which is equivalent to a conservation of particle number <span class="math notranslate nohighlight">\([H, \hat{N}] = 0\)</span> where <span class="math notranslate nohighlight">\(\hat{N} = \sum_{i} (c_{i\uparrow}^\dagger c_{i\uparrow}+c_{i\downarrow}^\dagger c_{i\downarrow})\)</span>. Similarly, under a <span class="math notranslate nohighlight">\(c_{i\sigma} \rightarrow c_{i\sigma}e^{i\sigma\theta}\)</span> which is isomorphic to <span class="math notranslate nohighlight">\(U(1)\)</span>, we found another symmetry, indicating the conservation of <span class="math notranslate nohighlight">\(\hat{S}_z = \sum_{i} (c_{i\uparrow}^\dagger c_{i\uparrow}-c_{i\downarrow}^\dagger c_{i\downarrow})\)</span>. These conservations are generic and not restricted to Hubbard model.</p>
+<p>Without external field, the single-band Hubbard model usually has more spin symmetry than <span class="math notranslate nohighlight">\(U(1)\)</span>. One can easily verify that the total spin operator <span class="math notranslate nohighlight">\(\vec{S} = \frac12\sum_{i}\sum_{a,b\in\{\uparrow,\downarrow\}} c_{i a}^\dagger \vec{\sigma}_{ab}  c_{i b}\)</span> commutes with the Hubbard Hamiltonian. Thus, the symmetry of <span class="math notranslate nohighlight">\(H_{\rm Hubbard}\)</span> in Eq. (35) is increased to <span class="math notranslate nohighlight">\(U(1)\times SU(2)\)</span>. Furthermore, the charge conservation can be replaced by the particle-hole symmetry in a bipartite lattice for the Hubbard model with only nearest neighbor hopping, leading to a <span class="math notranslate nohighlight">\(SU(2)\times SU(2)=SO(4)\)</span>.</p>
+<p>Also as what has been used in the previous sections, the Hamiltonian has a geometric translational symmetry <span class="math notranslate nohighlight">\(\big[H,\mathcal{T}\big]=0\)</span> in an infinite plane (or equivalently with periodic boundary conditions). Other geometric symmetries such as rotation, reflection, and inversion are also usually considered to simplify the problem.</p>
+<p><strong>3. The Extended Hubbard Model</strong></p>
+<p>In the projection into single-band models, there exist some other interaction terms which are not typically considered. In some special situations discussing, for example, interaction-induced phase transitions, an extended Hubbard model may be considered. Beyond the on-site Coulomb repulsion, the density interaction between neighbors and next neighbors are sometimes considered as a simple way to drive charge-density-wave (CDW) orders. This includes</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H_{\rm ex-Hubbard} = H_{\rm Hubbard} + V\sum_{\langle i,j\rangle\atop \sigma\sigma^\prime} c_{i\sigma}^\dagger c_{j\sigma^\prime}^\dagger c_{j\sigma^\prime}c_{i\sigma}
++ V^\prime\sum_{\langle\!\langle i,j\rangle\!\rangle\atop \sigma\sigma^\prime} c_{i\sigma}^\dagger c_{j\sigma^\prime}^\dagger c_{j\sigma^\prime}c_{i\sigma}.\end{aligned}\]</div>
+<p>Eq. (37)</p>
+</section>
+<section id="c-spin-models">
+<h2>C. Spin Models<a class="headerlink" href="#c-spin-models" title="Permalink to this heading"></a></h2>
+<p>Although the zeroth order or atomic limit Hubbard model displays a Mott gap, the physics inside upper or lower Hubbard band is attractive as it determines the dynamics in the vicinity of half-filling. Therefore, by projecting out the double occupancies, the low-energy physics of Hubbard model can be well approximated by spin models.</p>
+<p>Let <span class="math notranslate nohighlight">\(D = \sum_{i}n_{i\uparrow}n_{i\downarrow}\)</span>,
+then the Hubbard model can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H_{\rm Hubbard} = H_{KE} + UD .\end{aligned}\]</div>
+<p>According to the commutation with <span class="math notranslate nohighlight">\(D\)</span>, the <span class="math notranslate nohighlight">\(H_{KE}\)</span> can be divided into three parts <span class="math notranslate nohighlight">\(H_{KE} = \mathcal{T}_0 + \mathcal{T}_+ + \mathcal{T}_-\)</span>, in which</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\mathcal{T}_- = -t\sum_{\langle i,j\rangle\sigma} \left(1-n_{i\bar{\sigma}}\right)c_{i\sigma}^\dagger c_{j\sigma} n_{j\bar{\sigma}},\quad
+\mathcal{T}_+ = -t\sum_{\langle i,j\rangle\sigma} n_{j\bar{\sigma}} c_{j\sigma}^\dagger c_{i\sigma}\left(1-n_{i\bar{\sigma}}\right)\end{aligned}\]</div>
+<p>Eq. (38)</p>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\mathcal{T}_0 = -t\sum_{\langle i,j\rangle\sigma} \left[\left(1-n_{i\bar{\sigma}}\right)c_{i\sigma}^\dagger c_{j\sigma} \left(1-n_{j\bar{\sigma}}\right) + n_{j\bar{\sigma}} c_{j\sigma}^\dagger c_{i\sigma}n_{i\bar{\sigma}}\right]\end{aligned}\]</div>
+<p>Eq. (39)</p>
+<p>They follow the relation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\left\{\begin{array}{l}
+\left[D, \mathcal{T}_0 \right] = 0\\
+\left[D, \mathcal{T}_\pm \right] = \pm\mathcal{T}_\pm
+\end{array}\right.\end{aligned}\end{split}\]</div>
+<p>Eq. (40)</p>
+<p>Note the operator <span class="math notranslate nohighlight">\(\mathcal{T}_+\)</span> (<span class="math notranslate nohighlight">\(\mathcal{T}_-\)</span>) creates (annihilates) doublons, while <span class="math notranslate nohighlight">\(\mathcal{T}_0\)</span> (<span class="math notranslate nohighlight">\(D\)</span>) projects into single (double) occupied subspace. Making use of this property, one could design the canonical transformation perturbatively decoupling these two subspaces by eliminating <span class="math notranslate nohighlight">\(\mathcal{T}_+\)</span> and <span class="math notranslate nohighlight">\(\mathcal{T}_-\)</span>. Assume <span class="math notranslate nohighlight">\(S = \frac{t}{U}S_1 + \frac{t^2}{U^2} S_2 + O\left(\frac{t^3}{U^3}\right)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+e^{iS}H_{\rm Hubbard} e^{-iS} = H_{\rm Hubbard} + i\left[S,H_{\rm Hubbard}\right] - \frac12\big[S, \left[S,H_{\rm Hubbard}\right]\big] + O(S^3).\end{aligned}\]</div>
+<p>Eq. (41)</p>
+<p>The zeroth order expansion reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\textrm{zeroth order}=\mathcal{T}_0 + \mathcal{T}_+ + \mathcal{T}_- + UD + i\left[\frac{t}{U}S_1,UD\right] \Rightarrow\ \  i\left[tS_1,D\right] = - \mathcal{T}_+ -\mathcal{T}_-,\end{aligned}\]</div>
+<p>of which simplest solution is <span class="math notranslate nohighlight">\(S_1 = \frac1{it} \left(\mathcal{T}_+ -\mathcal{T}_-\right)\)</span>.</p>
+<p>Similarly, the first order reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\textrm{first order}=i\left[\frac{t}{U}S_1,\mathcal{T}_0 + \mathcal{T}_+ + \mathcal{T}_-\right] +i\left[\frac{t^2}{U^2}S_2, UD\right]-\frac12\left[\frac{t}{U}S_1,\left[\frac{t}{U}S_1,UD\right]\right]=\frac1{U} \left[\mathcal{T}_+,\mathcal{T}_-\right]\end{aligned}\]</div>
+<p>The last step is obtained by selecting <span class="math notranslate nohighlight">\(S_2\)</span> so that <span class="math notranslate nohighlight">\(t\left[S_2,D\right]= -\left[S_1,\mathcal{T}_0\right]\)</span>. In fact, this has to be satisfied since both terms contribute nothing to the subspace-invariant operators.</p>
+<p>Thus, the first-order perturbation theory projects the Hubbard model in to single- and double-occupied subspaces:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:effHamtJ}
+H_{\rm eff}\approx e^{iS}H_{\rm Hubbard} e^{-iS}=\mathcal{T}_0 + UD + \frac1{U} \left[\mathcal{T}_+,\mathcal{T}_-\right].\end{aligned}\]</div>
+<p>Eq.(42)</p>
+<p>According to the canonical decomposition in Eq. (42), the effective Hamiltonian approximately lies in the eigenspace of <span class="math notranslate nohighlight">\(D\)</span>. Since we are most interested in the low-energy physics, let us consider its projection into <span class="math notranslate nohighlight">\(D =0\)</span> subspace by <span class="math notranslate nohighlight">\(\mathcal{P}_0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\label{chp1:tJHam1}
+\mathcal{P}_0H_{\rm eff}\mathcal{P}_0 &amp;\approx &amp;\mathcal{P}_0\mathcal{T}_0\mathcal{P}_0 - \frac1{U} \mathcal{P}_0\mathcal{T}_-\mathcal{T}_+\mathcal{P}_0\nonumber\\
+&amp;=&amp; -t\sum_{\langle i,j\rangle\sigma} \tilde{c}_{i\sigma}^\dagger \tilde{c}_{j\sigma}-\frac{t^2}{U}\sum_{\langle\textbf{m}ij\rangle\atop\sigma}\left[
+         \tilde{c}^\dagger_{\textbf{m}\sigma} \tilde{n}_{i\bar{\sigma}}
+         \tilde{c}_{j\sigma}
+    -    \tilde{c}^\dagger_{\textbf{m}\bar{\sigma}}
+            \tilde{c}^\dagger_{i\sigma}\tilde{c}_{i\bar{\sigma}}
+         \tilde{c}_{j\sigma}
+         \right].\end{aligned}\end{split}\]</div>
+<p>Eq. (43)</p>
+<p>Here, we define the correlated annihilation operator <span class="math notranslate nohighlight">\(\tilde{c}_{i\sigma}  = c_{i\sigma} \left(1- n_{i\bar{\sigma}}\right)\)</span>. If we ignore those <span class="math notranslate nohighlight">\(\textbf{m} \neq j\)</span> terms which vanish at half-filling, assuming <span class="math notranslate nohighlight">\(\textbf{m} = j\)</span>, the formula can be further simplified using spin operators</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+S_{i}^{z}  = \frac12 \left(\tilde{n}_{i\uparrow}-\tilde{n}_{i\downarrow}\right),\quad
+S_{i}^{+}  = \tilde{c}_{i\uparrow}^\dagger \tilde{c}_{i\downarrow},\quad
+S_{i}^{-}  = \tilde{c}_{i\downarrow}^\dagger \tilde{c}_{i\uparrow}\,.\end{aligned}\]</div>
+<p>Eq. (44)</p>
+<p>Therefore, we obtain the <span class="math notranslate nohighlight">\(t-J\)</span> model</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:tJHam2}
+H_{t-J} = -t\sum_{\langle i,j\rangle\sigma} \tilde{c}_{i\sigma}^\dagger \tilde{c}_{j\sigma}+J\sum_{\langle ij\rangle}\left[
+         \mathbf{S}_i\cdot \mathbf{S}_j - \frac14\tilde{n}_i\tilde{n}_j\right]\end{aligned}\]</div>
+<p>Eq. (45)</p>
+<p>with <span class="math notranslate nohighlight">\(J= 4t^2/U\)</span>. While <span class="math notranslate nohighlight">\(t-J\)</span> model is widely used in describing the antiferromagnetism (Chao et al., 1977, 1978; Belinicher and Chernyshev, 1994; Belinicher et al., 1994), the full expression of the second-order perturbative Hamiltonian further includes the <em>three-site terms</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:tJ3sHam}
+H_{t-J-3s} = H_{t-J}
+         -\frac{J}{4}\sum_{\langle\textbf{m}i\rangle,\langle ij\rangle\atop\textbf{m}\neq j,\sigma}\left[
+         \tilde{c}^\dagger_{\textbf{m}\sigma} \tilde{n}_{i\bar{\sigma}}
+         \tilde{c}_{j\sigma}
+    -    \tilde{c}^\dagger_{\textbf{m}\bar{\sigma}}
+            \tilde{c}^\dagger_{i\sigma}\tilde{c}_{i\bar{\sigma}}
+         \tilde{c}_{j\sigma}
+         \right].\end{aligned}\]</div>
+<p>Eq. (46)</p>
+<p>These extra terms reflect a correlated hopping mechanisms through three continuous sites, with the help of an intermediate spin (Belinicher and Chernyshev, 1994; Belinicher et al., 1994; Stephan and Horsch, 1992; Jefferson et al.,
+1992; Bala et al., 1995; Spalek, 1988; von Szczepanski et al., 1990; Eskes and Ole ́s, 1994; Eskes et al., 1994; Belinicher
+et al., 1996a,b; Psaltakis, 1992; Eskes and Eder, 1996; Daghofer et al., 2008; Wohlfeld et al., 2008; Kuz’min et al.,
+2014).</p>
+</section>
+<section id="d-phonon-and-electron-phonon-coupling">
+<h2>D. Phonon and Electron-Phonon Coupling<a class="headerlink" href="#d-phonon-and-electron-phonon-coupling" title="Permalink to this heading"></a></h2>
+<p>The generic electron-phonon coupling can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:eqGeneraleph}
+H_{}
+=-\frac1{\sqrt{L}} \sum_{k,q,\nu} g_\nu(k,q) c_{k+q}^\dagger c_{k}\left(a_q+a^\dagger_{-q}\right)+\sum_{q,\nu}\Omega_\nu(q) a_q^\dagger a_q.\end{aligned}\]</div>
+<p>Eq. (47)</p>
+<p>Inside the sum, the <span class="math notranslate nohighlight">\(\nu\)</span> branch phonon scatters an electron at momentum <span class="math notranslate nohighlight">\(k\)</span> into <span class="math notranslate nohighlight">\(k+q\)</span> with amplitude <span class="math notranslate nohighlight">\(g_\nu(k,q)\)</span>. Here we omit the orbital indices of the electron to simplify our discussion. The phonon branches can be acoustic or various optical types depending on the form of vibrations, which determines both the dispersion <span class="math notranslate nohighlight">\(\Omega_\nu(q)\)</span> and the coupling vertex <span class="math notranslate nohighlight">\(g_\nu(k,q)\)</span>.</p>
+<p><strong>1. The Holstein Model</strong></p>
+<p>The Holstein phonon assumes exclusively local  with Einstein dispersion. In momentum representation, it requires <span class="math notranslate nohighlight">\(g_{(\rm Holstein)}(k,q)\equiv g\)</span>. The Holstein model reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+H^{\rm (Holstein)}_{}= -g\sum_j c_j^\dagger c_j (a_j+a_j^\dagger)+\Omega_0 \sum_j a_j^\dagger a_j=-\frac{g}{\sqrt{L}} \sum_{k,q}(c_k^\dagger c_{k-q} a_q+c_k^\dagger c_{k+q} a^\dagger_q)+\Omega_0 \sum_k a^\dagger a_k.\end{aligned}\]</div>
+<p>Eq. (48)</p>
+<p>Here, each site is assigned an independent phonon mode and <span class="math notranslate nohighlight">\(e-ph\)</span> couplings are treated locally. The phonon energy is estimated as Einstein model to mimic optic phonons with no dispersion.</p>
+<p>When considering inelastic electron-phonon coupling, the second order electron-phonon term can be included</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+H^{\rm (Holstein)}_{e-2ph}&amp;=&amp; -g_2\sum_j n_j \left(a_j+a_j^\dagger\right)^2\\
+%&amp;=&amp;-\frac{g_2}{L^2} \sum_j\sum_{k_1 k_2 q_1 q_2}e^{-i(k_1-k_2)\cdot j}c_{k_1}^\dagger c_{k_2}\left(a_{q_1}e^{iq_1\cdot j}+h.c.\right)\left(a_{q_2}e^{iq_2\cdotj}+h.c.\right)\\
+&amp;=&amp;-\frac{g_2}{L} \sum_{k,q_1,q_2}\left[
+c_{k+q_1+q_2}^\dagger c_{k}a_{q_1}a_{q_2}
++c_{k+q_1-q_2}^\dagger c_{k}a_{q_1}a^\dagger_{q_2}\right.\nonumber\\
+&amp;&amp;\left.
++c_{k-q_1+q_2}^\dagger c_{k}a_{q_1}^\dagger a_{q_2}
++c_{k-q_1-q_2}^\dagger c_{k}a_{q_1}^\dagger a^\dagger_{q_2}\right].\end{aligned}\end{split}\]</div>
+<p>Note, with the existence of second-order couplings, the quadratic phonon potential can be not sufficient to support a bound state. In this case, the anharmonicity of phonon energy also has to be considered. The discussion of non-linear coupling anharmonicity is beyond the scope of this thesis, but is an important extension for further studies.</p>
+<p><strong>2. Bond-Phonon Peierls Model</strong></p>
+<p>At half-filled electronic states, the coupling near nesting momentum
+<span class="math notranslate nohighlight">\(q_{\rm nest}\)</span> usually dominates the underlying order.
+Therefore, we introduce the Peierls bond-phonon model, which simplifies
+the lattice degrees of freedom to a uniform dimerization. In momentum
+representation,
+<span class="math notranslate nohighlight">\(g_{(\rm Peierls)}(k,q)= \frac{g}{\sqrt{L}}\delta_{q,q_{\rm nest}}\)</span>.
+In 1D system, such a nesting momentum is <span class="math notranslate nohighlight">\(q_{\rm nest} = \pi\)</span>.
+Therefore, the <span class="math notranslate nohighlight">\(e-ph\)</span> part of Hamiltonian reads:</p>
+<div class="math notranslate nohighlight">
+\[\label{chp1:eqPeierlsHubbard}
+\mathcal{H}^{\rm (Peierls)}_{}=-\frac{g}{\sqrt{L}}(b^\dagger +b)\sum_{i,\sigma}(-1)^in_{i\sigma}+\Omega_0\, b^\dagger b,\]</div>
+<p>Eq. (49)</p>
+<p>where <span class="math notranslate nohighlight">\(b^\dagger\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are the phonon creation and annihilation operator, respectively. Such a phonon mode is highly nonlocal, coupling to a overall charge order at the nesting momentum.</p>
+<p>Extending into 2D systems with bipartite geometry, the nesting momentum lies in the boundary of first Brillouin zone (BZ). Typically in a square lattice, the <span class="math notranslate nohighlight">\(e-ph\)</span> part of Hamiltonian reads:</p>
+<div class="math notranslate nohighlight">
+\[\label{chp1:eqPeierlsHubbard2D}
+\mathcal{H}^{\rm (Peierls)}_{}=-\frac{g}{\sqrt{L}}(b^\dagger +b)\sum_{i,\sigma}(-1)^{i_x+i_y}n_{i\sigma}+\Omega_0\, b^\dagger b.\]</div>
+<p>Eq. (50)</p>
+<p><strong>3. Forward Scattering</strong></p>
+<p>In contrast to the localized Holstein coupling and nested Peierls coupling, the small-<span class="math notranslate nohighlight">\(q\)</span> or so-called forward scattering sometimes play more significant role in describing the coupling between electrons with optical phonons. To describe this type of coupling mechanism at the surface or interface solid states, two models are used in this thesis.</p>
+<p>The Thomas-Fermi model describes the linear screening of an impurity in a free electron gas. The screened Coulomb potential is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\left[\nabla^2-q_{\rm TF}^2\right] V(r) = 4\pi e \rho_{\rm imp}(r),\end{aligned}\]</div>
+<p>Eq. (51)</p>
+<p>where <span class="math notranslate nohighlight">\(q_{\rm TF} = \sqrt{6\pi e^2 n_0/E_F}\)</span> with <span class="math notranslate nohighlight">\(n_0\)</span> the average electron density and <span class="math notranslate nohighlight">\(E_F\)</span> Fermi level. The model results in a exponential spatial screening of a point charge <span class="math notranslate nohighlight">\(V(r) = - {eQ_{\rm imp}}e^{-q_{\rm TF} |r|}/|r|\)</span>. Applied to the electron-phonon coupling, the Thomas-Fermi scattering vertex is</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:eqTFephCoupling}
+g_{(\rm Thomas-Fermi)}(k,q)= \frac{4\pi g_0}{1+|q|^2/q_{\rm TF}^2}.\end{aligned}\]</div>
+<p>Eq. (52)</p>
+<p>However, the power-law decay in momentum space is still quasi-local interactions. To depicts the forward scattering at 2D surface or interface, an exponential coupling vertex is required</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:eqExpCoupling}
+g_{(\rm Exp)}(k,q)= g_0 \exp\left(-|q|/q_0\right).\end{aligned}\]</div>
+<p>Eq. (53)</p>
+<p>This type of coupling can better describe the electronic structure at surface states such as SrTiO3(Lee et al., 2014; Wang et al., 2016a,b).</p>
+<p><strong>4. Lang-Firsov Transfromation</strong></p>
+<p>The zeroth order behavior of forward scattering can be approximately estimated by assuming the momentum scale <span class="math notranslate nohighlight">\(q_0\)</span> or <span class="math notranslate nohighlight">\(q_{\rm TF}\)</span> goes to zero. Under this assumption, the canonical second quantized Hamiltonian for <span class="math notranslate nohighlight">\(q=0\)</span>  coupling reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:eqLangFirsov}
+H=\sum_{k} \varepsilon_k c^\dagger_k c_k -g_0(a^\dagger +a)\sum_k c^\dagger_k c_k  +\Omega_0 a^\dagger a\end{aligned}\]</div>
+<p>Eq. (54)</p>
+<p>with <span class="math notranslate nohighlight">\(\sum_{k} c^\dagger_k c_k =N_e\)</span> in canonical ensemble. Define <span class="math notranslate nohighlight">\(\lambda={g_0N_e}/{\omega_0}\)</span> and another bosonic operator <span class="math notranslate nohighlight">\(b=a-\lambda\)</span>, then the Hamiltonian becomes <span class="math notranslate nohighlight">\(H=\sum_{k} \varepsilon_k c^\dagger_k c_k  +\Omega_0 b^\dagger b -\omega_0\lambda^2\)</span> whose ground state is phonon vacuum in <span class="math notranslate nohighlight">\(b\)</span> basis, therefore a coherent state with <span class="math notranslate nohighlight">\(a\)</span> phonon</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+|G\rangle =  \prod_{|k|&lt;k_F}c_k^\dagger e^{-|\lambda|^2/2} e^{\lambda a^\dagger}|0\rangle.\end{aligned}\]</div>
+<p>Eq. (55)</p>
+<p>After some algebra, one can get the spectral function displaying <em>phonon
+shake-off</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+A(k, w) = -\frac1{\pi}\textrm{Im} G^h(k, w+i\Gamma) \rightarrow \sum_{m}\delta\left(\omega-E_m\right)\left|\mathcal{A}_k^{(m)}\right|^2\end{aligned}\]</div>
+<p>Eq. (56)</p>
+<p>where
+<span class="math notranslate nohighlight">\(E_m=\varepsilon_k -m\omega_0 - \frac{2g_0^2}{\omega_0}N_e\)</span> and
+the intensity follows Poisson distribution</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\label{chp1:eqLangFirsovWeights}
+\left|\mathcal{A}_k^{(m)}\right|^2 = e^{-g_0^2/\omega_0^2}\frac{(g_0^2/\omega_0^2)^m}{m!}.\end{aligned}\]</div>
+<p>Eq. (57)</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Simplifications.html" class="btn btn-neutral float-left" title="Simplifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Important%20Observables.html" class="btn btn-neutral float-right" title="Important Observables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, VD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

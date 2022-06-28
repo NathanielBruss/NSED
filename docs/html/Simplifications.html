@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simplifications &mdash; NGSED 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Derivations for Typical Tight-Binding Models" href="Derivations%20for%20Typical%20Tight-Binding%20Models.html" />
+    <link rel="prev" title="Formulas and Examples" href="Formulas%20and%20Examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NGSED
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Function%20of%20the%20Codes.html">Function of the Codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Input%20Files.html">Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output%20Files.html">Output Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiling%20and%20Running.html">Compiling and Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Architecture%20of%20the%20Program.html">Architecture of the Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Formulas%20and%20Examples.html">Formulas and Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simplifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Derivations%20for%20Typical%20Tight-Binding%20Models.html">Derivations for Typical Tight-Binding Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Important%20Observables.html">Important Observables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NGSED</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Simplifications</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Simplifications.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simplifications">
+<h1>Simplifications<a class="headerlink" href="#simplifications" title="Permalink to this heading"></a></h1>
+<p>The non-equilibrium spectrum can be simplified using the fact that</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \langle \hat{O}^\dagger(t_2) \hat{O}(t_1)\rangle = \left[\langle \hat{O}^\dagger(t_1) \hat{O}(t_2)\rangle\right]^*\end{aligned}\]</div>
+<p>eqn(12)</p>
+<p>Then the S(ω, t) in Eq. (8) (In Formlas and Examples) can be simplified as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+     &amp;&amp;\frac{\sigma_{\rm pr}}{\sqrt{\pi}} \iint_{t_1&lt;t_2}\!dt_2 dt_1 e^{i\omega(t_1-t_2)} g(t_1;t)g(t_2;t)\langle \hat{O}^\dagger(t_1) \hat{O}(t_2)\rangle\nonumber\\
+    &amp;&amp;+\frac{\sigma_{\rm pr}}{\sqrt{\pi}} \iint_{t_1&gt;t_2}\!dt_2 dt_1 e^{i\omega(t_1-t_2)} g(t_1;t)g(t_2;t)\langle \hat{O}^\dagger(t_1) \hat{O}(t_2)\rangle\nonumber\\
+    &amp;=&amp;\! \frac{\sigma_{\rm pr}}{\sqrt{\pi}} \iint_{t_1&lt;t_2}\!dt_2 dt_1  g(t_1;t)g(t_2;t)\nonumber\\
+    &amp;&amp;\left[e^{i\omega(t_1-t_2)}\langle \hat{O}^\dagger(t_1) \hat{O}(t_2)\rangle\right.\left.+ e^{i\omega(t_2-t_1)} \langle \hat{O}^\dagger(t_2) \hat{O}(t_1)\rangle\right]\nonumber\\
+    &amp;=&amp;\! \frac{2\sigma_{\rm pr}}{\sqrt{\pi}}\! \iint_{t_1&lt;t_2}\!dt_2 dt_1  g(t_1;t)g(t_2;t)\mathrm{Re}\!\left[e^{i\omega(t_1-t_2)}\langle \hat{O}^\dagger(t_1) \hat{O}(t_2)\rangle\right]\nonumber\\\end{aligned}\end{split}\]</div>
+<p>eqn(13)</p>
+<p>Note that for the discrete time axis used in numerics, one should add the t1 = t2 zero-measure part</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+     \frac{\sigma_{\rm pr}}{\sqrt{\pi}}\! \int_{t_1}\! dt_1  g(t_1;t)^2\mathrm{Re}\!\left[\langle \hat{O}^\dagger(t_1) \hat{O}(t_1)\rangle\right]\end{aligned}\]</div>
+<p>eqn(14)</p>
+<p>Similarly, the four-time correlation function</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\big\langle \hat{\mathcal{D}}^\dagger(t_2)\hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_1)  \big\rangle_0 = \left[\big\langle \hat{\mathcal{D}}^\dagger(t_1)\hat{\mathcal{D}}(t_1^\prime) \hat{\mathcal{D}}^\dagger(t_2^\prime)   \hat{\mathcal{D}}(t_2)  \big\rangle_0\right]^*\end{aligned}\]</div>
+<p>eqn(15)</p>
+<p>Therefore, the trRIXS cross-section can be simplified as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+&amp;&amp;\mathcal{I}(q_i,q_s,\omega_{in},\omega_s;\epsilon_i,\epsilon_s)(t)\!\nonumber\\
+&amp;=&amp;\! \iint\!dt_1dt_2
+e^{i\omega(t_2-t_1)}
+ g(t_1,t)g(t_2,t) C(t_1,t_2; \omega_s)\end{aligned}\end{split}\]</div>
+<p>eqn(16)</p>
+<p>where the effective two-time correlation takes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+C(t_1,t_2; \omega_s)\!&amp;=&amp;\!  \iint dt_1^\prime dt_2^\prime e^{-i\omega_s(t_2^\prime-t_1^\prime)}  l(t_1,t_1^\prime)l(t_2,t_2^\prime)\times\nonumber\\
+&amp;&amp;\!\big\langle \hat{\mathcal{D}}^\dagger(t_2)\hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_1)  \big\rangle_0\nonumber\\
+&amp;=&amp;\iint_{t_1^\prime &lt; t_2^\prime} dt_1^\prime dt_2^\prime e^{-i\omega_s(t_2^\prime-t_1^\prime)}  l(t_1,t_1^\prime)l(t_2,t_2^\prime)\nonumber\\
+&amp;&amp;\!\big\langle \hat{\mathcal{D}}^\dagger(t_2)\hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_1)  \big\rangle_0\nonumber\\
+&amp;&amp;+\iint_{t_1^\prime &gt; t_2^\prime} dt_1^\prime dt_2^\prime e^{-i\omega_s(t_2^\prime-t_1^\prime)}  l(t_1,t_1^\prime)l(t_2,t_2^\prime)\nonumber\\
+&amp;&amp;\!\big\langle \hat{\mathcal{D}}^\dagger(t_2)\hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_1)  \big\rangle_0\nonumber\\
+&amp;=&amp;\iint_{t_1^\prime &lt; t_2^\prime} dt_1^\prime dt_2^\prime \Big[e^{-i\omega_s(t_2^\prime-t_1^\prime)}  l(t_1,t_1^\prime)l(t_2,t_2^\prime)\nonumber\\
+&amp;&amp;\!\big\langle \hat{\mathcal{D}}^\dagger(t_2)\hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_1)  \big\rangle_0+ e^{i\omega_s(t_2^\prime-t_1^\prime)}\nonumber\\
+&amp;&amp;  l(t_1,t_2^\prime)l(t_2,t_1^\prime)\big\langle \hat{\mathcal{D}}^\dagger(t_1) \hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_2) \big\rangle_0^*\Big]\nonumber\\\end{aligned}\end{split}\]</div>
+<p>eqn(17)</p>
+<p>Easy to show that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+C(t_1,t_2; \omega_s)^*\!&amp;=&amp;\! \iint_{t_1^\prime &lt; t_2^\prime} dt_1^\prime dt_2^\prime \Big[e^{i\omega_s(t_2^\prime-t_1^\prime)}  l(t_1,t_1^\prime)l(t_2,t_2^\prime)\nonumber\\
+&amp;&amp;\!\big\langle \hat{\mathcal{D}}^\dagger(t_2)\hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_1)  \big\rangle_0^*+ e^{-i\omega_s(t_2^\prime-t_1^\prime)}\nonumber\\
+&amp;&amp;  l(t_1,t_2^\prime)l(t_2,t_1^\prime)\big\langle \hat{\mathcal{D}}^\dagger(t_1) \hat{\mathcal{D}}(t_2^\prime) \hat{\mathcal{D}}^\dagger(t_1^\prime)   \hat{\mathcal{D}}(t_2) \big\rangle_0\Big]\nonumber\\
+&amp;=&amp; C(t_2,t_1; \omega_s)\end{aligned}\end{split}\]</div>
+<p>eqn(18)</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Formulas%20and%20Examples.html" class="btn btn-neutral float-left" title="Formulas and Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Derivations%20for%20Typical%20Tight-Binding%20Models.html" class="btn btn-neutral float-right" title="Derivations for Typical Tight-Binding Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, VD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
