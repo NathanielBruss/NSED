@@ -59,3 +59,5 @@ source_suffix = {
     '.txt': 'markdown',
     '.md': 'markdown',
 }
+
+html_css_files = ['custom.css']

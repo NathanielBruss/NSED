@@ -4,138 +4,51 @@ Formulas and Examples
 A. CPT
 ----------
 
-.. table:: Truth table for "not"
-   :widths: auto
+**Hilbert space input file (hilbertspace params.in)**
 
-   =====  =====
-     A    not A
-   =====  =====
-   False  True
-   True   False
-   =====  =====
+::
+	| Cluster: 16A
+	| ElectronicSiteNumber: 16
+	| Dimension: 2D
+	| Boundary: Periodic
+	| Representation: Realspace
+	| Occupancy: 12(6,6)
+			
 
-to
 
-.. raw:: html
+		
+|
 
-	<embed>
-	<table style="width:66%;">
-	<table border="1">
-	<colgroup>
-	<col style="width: 66%" />
-	</colgroup>
-	<thead>
-	<tr class="header">
-	<th>Hilbert space input file (hilbertspace params.in)</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr class="odd">
-	<td>Cluster: 16A</td>
-	</tr>
-	<tr class="even">
-	<td>ElectronicSiteNumber: 16</td>
-	</tr>
-	<tr class="odd">
-	<td>Dimension: 2D</td>
-	</tr>
-	<tr class="even">
-	<td>Boundary: Periodic</td>
-	</tr>
-	<tr class="odd">
-	<td>Representation: Realspace</td>
-	</tr>
-	<tr class="even">
-	<td>Occupancy: 12(6,6)</td>
-	</tr>
-	</tbody>
-	</table>
-	</embed>
+**Model parameter input file (model params.in)**
 
-.. raw:: html
-
-	<table style="width:60%;">
-	<table border="1">
-	<colgroup>
-	<col style="width: 60%" />
-	</colgroup>
-	<thead>
-	<tr class="header">
-	<th>Model parameter input file (model params.in)</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr class="odd">
-	<td>Hubbard</td>
-	</tr>
-	<tr class="even">
-	<td>U= 8</td>
-	</tr>
-	<tr class="odd">
-	<td>t= 1 t’= -0.26 t’’= 0.06</td>
-	</tr>
-	</tbody>
-	</table>
-
-.. raw:: html
+::	
+	| Hubbard
+	| U= 8
+	| t= 1 t’= -0.26 t’’= 0.06
 	
-	<embed>
-	<table style="width:55%;">
-	<table border="1">
-	<colgroup>
-	<col style="width: 55%" />
-	</colgroup>
-	<thead>
-	<tr class="header">
-	<th>Spectroscopy input file (spec params.in)</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr class="odd">
-	<td>SpecType: A(k,w)</td>
-	</tr>
-	<tr class="even">
-	<td>Frequencies: [-16:0.01:24]</td>
-	</tr>
-	<tr class="odd">
-	<td>Krylov-subspace: 250</td>
-	</tr>
-	<tr class="even">
-	<td>broadening: 0.15</td>
-	</tr>
-	</tbody>
-	</table>
-	</embed>
+	
+|
 
-.. raw:: html
+**Spectroscopy input file (spec params.in)**
 
-	<embed>
-	<table style="width:45%;">
-	<table border="1">
-	<colgroup>
-	<col style="width: 45%" />
-	</colgroup>
-	<thead>
-	<tr class="header">
-	<th>CPT input file (cpt params.in)</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr class="odd">
-	<td>Doping: 2/16</td>
-	</tr>
-	<tr class="even">
-	<td>MomentumDensity: 100</td>
-	</tr>
-	<tr class="odd">
-	<td>requestedBZRegion: HighSymmLines</td>
-	</tr>
-	<tr class="even">
-	<td>FermiSurfaceThickness: 0.05</td>
-	</tr>
-	</tbody>
-	</table>
-	</embed>
+::
+	| SpecType: A(k,w)
+	| Frequencies: [-16:0.01:24]
+	| Krylov-subspace: 250
+	| broadening: 0.15
+	
+|
+
+**CPT input file (cpt params.in)**
+
+::
+
+	| Doping: 2/16
+	| MomentumDensity: 100
+	| requestedBZRegion: HighSymmLines
+	|FermiSurfaceThickness: 0.05
+
+|
 
 
 .. image:: /graphics/Fig_RIXS_LedgeSpinFlip(1).png
